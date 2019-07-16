@@ -81,6 +81,24 @@ const Stats = styled.p`
   }
 `;
 
+const Button = styled.button`
+  margin-right: 1.5rem;
+  padding: 0.5rem 1.25rem;
+  background: ${p => p.theme.colors.blueGrey};
+  color: ${p => p.theme.colors.cream};
+  font-size: 1em;
+  border: none;
+  border-radius: 0.5rem;
+  &:hover {
+    cursor: pointer;
+    background: ${p => p.theme.colors.blue};
+    color: ${p => p.theme.colors.blueBlack};
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
 function App() {
   const [config, setConfig] = useState({
     gridSize: 30,
@@ -134,11 +152,11 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
-      {isPaused && <button onClick={play}>Play</button>}
-      {isPaused && <button onClick={step}>Step</button>}
-      {!isPaused && <button onClick={pause}>Pause</button>}
-      {isPaused && <button onClick={randomize}>Randomize</button>}
-      {isPaused && <button onClick={reset}>Clear</button>}
+      {isPaused && <Button onClick={play}>Play</Button>}
+      {isPaused && <Button onClick={step}>Step</Button>}
+      {!isPaused && <Button onClick={pause}>Pause</Button>}
+      {isPaused && <Button onClick={randomize}>Randomize</Button>}
+      {isPaused && <Button onClick={reset}>Clear</Button>}
 
       <Stats>
         Generation <span>{genCount}</span>
