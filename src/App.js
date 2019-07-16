@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { media } from './styles/helpers';
 import Grid from './Grid';
 import useInterval from './useInterval';
 
@@ -61,7 +62,12 @@ const stepGrid = grid => {
 };
 
 const AppWrapper = styled.div`
-  margin: 1rem 2rem 3rem;
+  padding: 0 2rem 3rem;
+  margin: 0 auto;
+  position: relative;
+  ${media.phone`
+    padding: 0 4rem 3rem;
+  `}
 `;
 
 const Stats = styled.p`
@@ -128,11 +134,11 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
-      {isPaused && <button onClick={randomize}>Randomize</button>}
       {isPaused && <button onClick={play}>Play</button>}
-      {!isPaused && <button onClick={pause}>Pause</button>}
-      {isPaused && <button onClick={reset}>Reset</button>}
       {isPaused && <button onClick={step}>Step</button>}
+      {!isPaused && <button onClick={pause}>Pause</button>}
+      {isPaused && <button onClick={randomize}>Randomize</button>}
+      {isPaused && <button onClick={reset}>Clear</button>}
 
       <Stats>
         Generation <span>{genCount}</span>

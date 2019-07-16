@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { media } from './styles/helpers';
 
 const GridDisplay = styled.div`
   display: flex;
   flex-flow: wrap;
-  width: 50rem;
-  height: 50rem;
+  width: 100vw;
+  height: 100vw;
+  margin: 0 -2rem;
   border-top: 1px solid ${p => p.theme.colors.blueGrey};
   border-left: 1px solid ${p => p.theme.colors.blueGrey};
   & > div {
     width: calc(100% / ${p => p.size});
     height: calc(100% / ${p => p.size});
   }
+  ${media.phone`
+    margin: 0;
+    width: 50rem;
+    height: 50rem;
+  `}
+  ${media.tablet`
+    width: 60rem;
+    height: 60rem;
+  `}
 `;
 
 const CellDisplay = styled.div`
@@ -55,6 +66,7 @@ export default function Grid({ state, setCell, isPaused }) {
               draggable="false"
               data-row={i}
               data-col={j}
+              onTouchStart={handleMouseDown}
             />
           );
         });
