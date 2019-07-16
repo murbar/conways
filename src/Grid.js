@@ -21,13 +21,16 @@ const CellDisplay = styled.div`
   box-sizing: border-box;
 `;
 
-export default function Grid({ state }) {
+export default function Grid({ state, toggleCell }) {
   const size = state.length;
+
   return (
     <GridDisplay size={size}>
       {state.map((row, i) => {
         return row.map((isAlive, j) => {
-          return <CellDisplay key={`r${i}c${j}`} isAlive={!!isAlive} />;
+          return (
+            <CellDisplay key={`r${i}c${j}`} isAlive={!!isAlive} onClick={() => toggleCell(i, j)} />
+          );
         });
       })}
     </GridDisplay>
