@@ -72,6 +72,7 @@ function App() {
   const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
   const [evolutionInterval, setEvolutionInterval] = useState(null);
   const population = countPopulation(gridState);
+  const isPaused = evolutionInterval === null;
 
   const play = () => {
     setEvolutionInterval(config.speed);
@@ -116,11 +117,12 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
-      {evolutionInterval === null && <button onClick={randomize}>Randomize</button>}
-      {evolutionInterval === null && <button onClick={play}>Play</button>}
-      {evolutionInterval !== null && <button onClick={pause}>Pause</button>}
-      {evolutionInterval === null && <button onClick={reset}>Reset</button>}
-      {evolutionInterval === null && <button onClick={step}>Step</button>}
+      {isPaused && <button onClick={randomize}>Randomize</button>}
+      {isPaused && <button onClick={play}>Play</button>}
+      {!isPaused && <button onClick={pause}>Pause</button>}
+      {isPaused && <button onClick={reset}>Reset</button>}
+      {isPaused && <button onClick={step}>Step</button>}
+
       <p>Pop: {population}</p>
       <Grid state={gridState} toggleCell={toggleCell} />
 
