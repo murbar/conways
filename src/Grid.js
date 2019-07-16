@@ -15,7 +15,7 @@ const GridDisplay = styled.div`
 `;
 
 const CellDisplay = styled.div`
-  background: ${p => (p.on ? p.theme.colors.blue : 'transparent')};
+  background: ${p => (p.isAlive ? p.theme.colors.blue : 'transparent')};
   border-right: 1px solid ${p => p.theme.colors.blueGrey};
   border-bottom: 1px solid ${p => p.theme.colors.blueGrey};
   box-sizing: border-box;
@@ -25,9 +25,9 @@ export default function Grid({ state }) {
   const size = state.length;
   return (
     <GridDisplay size={size}>
-      {state.map(row => {
-        return row.map(on => {
-          return <CellDisplay on={!!on} />;
+      {state.map((row, i) => {
+        return row.map((isAlive, j) => {
+          return <CellDisplay key={`r${i}c${j}`} isAlive={!!isAlive} />;
         });
       })}
     </GridDisplay>
