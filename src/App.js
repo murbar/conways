@@ -97,9 +97,9 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
-      <button onClick={randomize}>Randomize</button>
-      <button onClick={play}>Play</button>
-      <button onClick={pause}>Pause</button>
+      {evolutionInterval === null && <button onClick={randomize}>Randomize</button>}
+      {evolutionInterval === null && <button onClick={play}>Play</button>}
+      {evolutionInterval !== null && <button onClick={pause}>Pause</button>}
       {evolutionInterval === null && <button onClick={step}>Step</button>}
       <Grid state={gridState} />
 
