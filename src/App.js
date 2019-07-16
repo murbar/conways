@@ -14,6 +14,16 @@ const initGrid = (size, random = false) =>
         })
     );
 
+const countPopulation = grid => {
+  let count = 0;
+  for (let row of grid) {
+    for (let col of row) {
+      if (col === 1) count++;
+    }
+  }
+  return count;
+};
+
 const countNeighbors = (grid, x, y) => {
   const size = grid.length;
   let count = 0;
@@ -61,6 +71,7 @@ function App() {
   });
   const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
   const [evolutionInterval, setEvolutionInterval] = useState(null);
+  const population = countPopulation(gridState);
 
   const play = () => {
     setEvolutionInterval(config.speed);
@@ -94,7 +105,7 @@ function App() {
       {evolutionInterval === null && <button onClick={play}>Play</button>}
       {evolutionInterval !== null && <button onClick={pause}>Pause</button>}
       {evolutionInterval === null && <button onClick={step}>Step</button>}
-      <Grid state={gridState} />
+      <p>Pop: {population}</p>
 
       <div className="rules">
         <h2>Rules</h2>
