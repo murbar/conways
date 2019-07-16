@@ -33,12 +33,7 @@ const countNeighbors = (grid, x, y) => {
 const stepGrid = grid => {
   const dimension = grid.length;
   const newGrid = initGrid(dimension);
-  // for each element in grid
-  // for (let row of grid) {
-  //   for (let col of row) {
-  //     const neighbors = countNeighbors(grid, x, )
-  //   }
-  // }
+
   for (let i = 0; i < dimension; i++) {
     for (let j = 0; j < dimension; j++) {
       const alive = !!grid[i][j];
@@ -53,8 +48,7 @@ const stepGrid = grid => {
       }
     }
   }
-  // get neighbors count
-  // set corresponding element in newGrid
+
   return newGrid;
 };
 
