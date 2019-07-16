@@ -63,30 +63,33 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
-  const [gameState, setGameState] = useState(initGrid(gridSize, true));
-  const [speed, setSpeed] = useState(null);
+  const [gridState, setGridState] = useState(initGrid(gridSize, true));
+  const [evolutionInterval, setEvolutionInterval] = useState(null);
+  const [config, setConfig] = useState({
+    speed: 200
+  });
 
   const play = () => {
-    setSpeed(200);
+    setEvolutionInterval(config.speed);
   };
 
   const pause = () => {
-    setSpeed(null);
+    setEvolutionInterval(null);
   };
 
   const randomize = () => {
     const newState = initGrid(gridSize, true);
-    setGameState(newState);
+    setGridState(newState);
   };
 
   const step = () => {
-    const newState = stepGrid(gameState);
-    setGameState(newState);
+    const newState = stepGrid(gridState);
+    setGridState(newState);
   };
 
   useInterval(() => {
     step();
-  }, speed);
+  }, evolutionInterval);
 
   return (
     <AppWrapper>
@@ -97,8 +100,8 @@ function App() {
       <button onClick={randomize}>Randomize</button>
       <button onClick={play}>Play</button>
       <button onClick={pause}>Pause</button>
-      {speed === null && <button onClick={step}>Step</button>}
-      <Grid state={gameState} />
+      {evolutionInterval === null && <button onClick={step}>Step</button>}
+      <Grid state={gridState} />
 
       <div className="rules">
         <h2>Rules</h2>
