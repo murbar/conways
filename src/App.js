@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import Grid from './Grid';
 import useInterval from './useInterval';
 
-const gridSize = 20;
-
 const initGrid = (size, random = false) =>
   Array(size)
     .fill()
@@ -57,11 +55,12 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
-  const [gridState, setGridState] = useState(initGrid(gridSize, true));
-  const [evolutionInterval, setEvolutionInterval] = useState(null);
   const [config, setConfig] = useState({
+    gridSize: 30,
     speed: 200
   });
+  const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
+  const [evolutionInterval, setEvolutionInterval] = useState(null);
 
   const play = () => {
     setEvolutionInterval(config.speed);
@@ -72,7 +71,7 @@ function App() {
   };
 
   const randomize = () => {
-    const newState = initGrid(gridSize, true);
+    const newState = initGrid(config.gridSize, true);
     setGridState(newState);
   };
 
