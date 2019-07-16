@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Grid from './Grid';
+import useInterval from './useInterval';
 
-const gridSize = 30;
+const gridSize = 20;
 
 const initGrid = (size, random = false) =>
   Array(size)
     .fill()
-    .map(() =>
+    .map(row =>
       Array(size)
         .fill()
-        .map(() => {
+        .map(col => {
           return random ? Math.round(Math.random()) : 0;
         })
     );
@@ -63,11 +64,29 @@ const AppWrapper = styled.div`
 
 function App() {
   const [gameState, setGameState] = useState(initGrid(gridSize, true));
+  const [speed, setSpeed] = useState(null);
+
+  const play = () => {
+    setSpeed(200);
+  };
+
+  const pause = () => {
+    setSpeed(null);
+  };
 
   const randomize = () => {
     const newState = initGrid(gridSize, true);
     setGameState(newState);
   };
+
+  const step = () => {
+    const newState = stepGrid(gameState);
+    setGameState(newState);
+  };
+
+  useInterval(() => {
+    step();
+  }, speed);
 
   return (
     <AppWrapper>
@@ -76,6 +95,9 @@ function App() {
       </header>
 
       <button onClick={randomize}>Randomize</button>
+      <button onClick={play}>Play</button>
+      <button onClick={pause}>Pause</button>
+      {speed === null && <button onClick={step}>Step</button>}
       <Grid state={gameState} />
 
       <div className="rules">
