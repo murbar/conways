@@ -15,6 +15,48 @@ const initGrid = (size, random = false) =>
         })
     );
 
+const countNeighbors = (grid, x, y) => {
+  const size = grid.length;
+  let count = 0;
+  for (let i = -1; i < 2; i++) {
+    for (let j = -1; j < 2; j++) {
+      const row = (x + i + size) % size;
+      const col = (y + j + size) % size;
+      count += grid[row][col];
+    }
+  }
+  count -= grid[x][y]; // don't count self
+  return count;
+};
+
+const stepGrid = grid => {
+  const dimension = grid.length;
+  const newGrid = initGrid(dimension);
+  // for each element in grid
+  // for (let row of grid) {
+  //   for (let col of row) {
+  //     const neighbors = countNeighbors(grid, x, )
+  //   }
+  // }
+  for (let i = 0; i < dimension; i++) {
+    for (let j = 0; j < dimension; j++) {
+      const alive = !!grid[i][j];
+      const neighbors = countNeighbors(grid, i, j);
+
+      if (!alive && neighbors === 3) {
+        newGrid[i][j] = 1;
+      } else if (alive && (neighbors < 2 || neighbors > 3)) {
+        newGrid[i][j] = 0;
+      } else {
+        newGrid[i][j] = alive;
+      }
+    }
+  }
+  // get neighbors count
+  // set corresponding element in newGrid
+  return newGrid;
+};
+
 const AppWrapper = styled.div`
   margin: 1rem 2rem 3rem;
 `;
