@@ -97,14 +97,11 @@ function App() {
     setGridState(newState);
   };
 
-  const toggleCell = (row, col) => {
-    if (evolutionInterval === null) {
-      setGridState(prev => {
-        const isAlive = !!prev[row][col];
-        prev[row][col] = isAlive ? 0 : 1;
-        return [...prev];
-      });
-    }
+  const setCell = (row, col, isAlive) => {
+    setGridState(prev => {
+      prev[row][col] = isAlive ? 1 : 0;
+      return [...prev];
+    });
   };
 
   useInterval(() => {
@@ -124,7 +121,8 @@ function App() {
       {isPaused && <button onClick={step}>Step</button>}
 
       <p>Pop: {population}</p>
-      <Grid state={gridState} toggleCell={toggleCell} />
+
+      <Grid state={gridState} setCell={setCell} isPaused={isPaused} />
 
       <div className="rules">
         <h2>Rules</h2>

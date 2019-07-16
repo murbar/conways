@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const GridDisplay = styled.div`
@@ -19,17 +19,43 @@ const CellDisplay = styled.div`
   border-right: 1px solid ${p => p.theme.colors.blueGrey};
   border-bottom: 1px solid ${p => p.theme.colors.blueGrey};
   box-sizing: border-box;
+  user-select: none;
 `;
 
-export default function Grid({ state, toggleCell }) {
+export default function Grid({ state, setCell, isPaused }) {
+  const [initialDragCellIsAlive, setInitialDragCellIsAlive] = useState(false);
   const size = state.length;
 
+  const handleMouseDown = e => {
+    if (isPaused) {
+      const { row, col } = e.target.dataset;
+      const isAlive = !!state[row][col];
+      setInitialDragCellIsAlive(isAlive);
+      setCell(row, col, !isAlive);
+    }
+  };
+
+  const handleMouseEnter = e => {
+    if (isPaused && e.buttons === 1) {
+      const { row, col } = e.target.dataset;
+      setCell(row, col, !initialDragCellIsAlive);
+    }
+  };
+
   return (
-    <GridDisplay size={size}>
+    <GridDisplay size={size} draggable="false">
       {state.map((row, i) => {
         return row.map((isAlive, j) => {
           return (
-            <CellDisplay key={`r${i}c${j}`} isAlive={!!isAlive} onClick={() => toggleCell(i, j)} />
+            <CellDisplay
+              key={`${i}${j}`}
+              isAlive={!!isAlive}
+              onMouseDown={handleMouseDown}
+              onMouseEnter={handleMouseEnter}
+              draggable="false"
+              data-row={i}
+              data-col={j}
+            />
           );
         });
       })}
