@@ -52,7 +52,7 @@ const stepGrid = grid => {
       } else if (alive && (neighbors < 2 || neighbors > 3)) {
         newGrid[i][j] = 0;
       } else {
-        newGrid[i][j] = alive;
+        newGrid[i][j] = alive ? 1 : 0;
       }
     }
   }
