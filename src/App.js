@@ -91,6 +91,10 @@ function App() {
     setGridState(newState);
   };
 
+  const reset = () => {
+    const newState = initGrid(config.gridSize);
+    setGridState(newState);
+  };
 
   const toggleCell = (row, col) => {
     if (evolutionInterval === null) {
@@ -115,6 +119,7 @@ function App() {
       {evolutionInterval === null && <button onClick={randomize}>Randomize</button>}
       {evolutionInterval === null && <button onClick={play}>Play</button>}
       {evolutionInterval !== null && <button onClick={pause}>Pause</button>}
+      {evolutionInterval === null && <button onClick={reset}>Reset</button>}
       {evolutionInterval === null && <button onClick={step}>Step</button>}
       <p>Pop: {population}</p>
       <Grid state={gridState} toggleCell={toggleCell} />
