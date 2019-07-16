@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Grid from './Grid';
 import useInterval from './useInterval';
@@ -64,6 +64,17 @@ const AppWrapper = styled.div`
   margin: 1rem 2rem 3rem;
 `;
 
+const Stats = styled.p`
+  text-transform: uppercase;
+  font-size: 0.8em;
+  span {
+    font-weight: bold;
+    display: inline-block;
+    min-width: 5rem;
+    text-align: right;
+  }
+`;
+
 function App() {
   const [config, setConfig] = useState({
     gridSize: 30,
@@ -71,8 +82,9 @@ function App() {
   });
   const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
   const [evolutionInterval, setEvolutionInterval] = useState(null);
-  const population = countPopulation(gridState);
+  const popCount = countPopulation(gridState);
   const isPaused = evolutionInterval === null;
+  const [genCount, setGenCount] = useState(0);
 
   const play = () => {
     setEvolutionInterval(config.speed);
@@ -88,11 +100,13 @@ function App() {
   };
 
   const step = () => {
+    setGenCount(prev => prev + 1);
     const newState = stepGrid(gridState);
     setGridState(newState);
   };
 
   const reset = () => {
+    setGenCount(0);
     const newState = initGrid(config.gridSize);
     setGridState(newState);
   };
@@ -120,7 +134,11 @@ function App() {
       {isPaused && <button onClick={reset}>Reset</button>}
       {isPaused && <button onClick={step}>Step</button>}
 
-      <p>Pop: {population}</p>
+      <Stats>
+        Generation <span>{genCount}</span>
+        <br />
+        Population <span>{popCount}</span>
+      </Stats>
 
       <Grid state={gridState} setCell={setCell} isPaused={isPaused} />
 
