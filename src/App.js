@@ -3,17 +3,7 @@ import styled from 'styled-components';
 import { media } from './styles/helpers';
 import Grid from './Grid';
 import useInterval from './useInterval';
-
-const initGrid = (size, random = false) =>
-  Array(size)
-    .fill()
-    .map(row =>
-      Array(size)
-        .fill()
-        .map(col => {
-          return random ? Math.round(Math.random()) : 0;
-        })
-    );
+import Footer from './components/Footer';
 
 const countPopulation = grid => {
   let count = 0;
@@ -170,7 +160,7 @@ function App() {
           <li>If a cell is alive and it have less than 2 or more than 4 neighbors it dies</li>
           <li>If a cell is dead and it has exactly 3 live neighbors it comes to life</li>
         </ul>
-      </div>
+      <Footer />
     </AppWrapper>
   );
 }
