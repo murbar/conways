@@ -9,6 +9,14 @@ import { ReactComponent as ResetIcon } from '../icons/x.svg';
 
 const ControlsWrapper = styled.div``;
 
+const IconButtonStep = styled(IconButton)`
+  svg {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+  }
+`;
+
 export default function Controls({ isPaused, callbacks }) {
   return (
     <ControlsWrapper>
@@ -20,9 +28,9 @@ export default function Controls({ isPaused, callbacks }) {
       </IconButton>
       {isPaused && (
         <>
-          <IconButton onClick={callbacks.step} title="Step through simulation">
+          <IconButtonStep onClick={callbacks.step} title="Step through simulation">
             <StepIcon />
-          </IconButton>
+          </IconButtonStep>
           <IconButton onClick={callbacks.randomize} title="Randomize cells">
             <RandomizeIcon />
           </IconButton>
