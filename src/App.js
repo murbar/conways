@@ -94,7 +94,7 @@ function App() {
       <GameContainer>
         <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset }} />
         <GridDisplay state={gridState} setCell={setCell} isPaused={isPaused} />
-        <Stats genCount={genCount} popCount={popCount} />
+        <Stats genCount={genCount} popCount={popCount} isPaused={isPaused} />
       </GameContainer>
 
       <About>
