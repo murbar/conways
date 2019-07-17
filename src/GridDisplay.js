@@ -23,6 +23,15 @@ const GridDisplay = styled.div`
     width: 60rem;
     height: 60rem;
   `}
+  ${media.desktop`
+    position: fixed;
+    left: calc(50vw - 4rem);
+    top: calc(50% - 25vw);
+    width: 50vw;
+    height: 50vw;
+    ${'' /* max-width: 100vh;
+    max-height: 100vh; */}
+  `}
 `;
 
 const CellDisplay = styled.div`

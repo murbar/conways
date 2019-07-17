@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { media } from './styles/helpers';
 import { initGrid, stepGrid, countPopulation } from './gameLogic';
-import Grid from './Grid';
+import GridDisplay from './GridDisplay';
 import useInterval from './useInterval';
 import Footer from './components/Footer';
 import Controls from './components/Controls';
+import Stats from './components/Stats';
 
 const AppWrapper = styled.div`
   padding: 0 2rem 3rem;
@@ -96,15 +97,11 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
+      <GridContainer>
       <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset }} />
-
-      <Stats>
-        Generation <span>{genCount}</span>
-        <br />
-        Population <span>{popCount}</span>
-      </Stats>
-
-      <Grid state={gridState} setCell={setCell} isPaused={isPaused} />
+        <GridDisplay state={gridState} setCell={setCell} isPaused={isPaused} />
+        <Stats genCount={genCount} popCount={popCount} />
+      </GridContainer>
 
       <div className="rules">
         <h2>Rules</h2>
