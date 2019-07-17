@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { media } from './styles/helpers';
 
 const GridDisplay = styled.div`
@@ -35,12 +35,26 @@ const GridDisplay = styled.div`
   `}
 `;
 
+const cellIsAlive = css`
+  box-shadow: 0 0 0.75rem ${p => p.theme.colors.blue};
+  border: none;
+`;
+
+const cellIsNotAlive = css`
+  &:hover {
+    background: ${p => p.theme.colors.blueGrey};
+  }
+`;
+
 const CellDisplay = styled.div`
   background: ${p => (p.isAlive ? p.theme.colors.blue : 'transparent')};
   border-right: 1px solid ${p => p.theme.colors.blueGrey};
   border-bottom: 1px solid ${p => p.theme.colors.blueGrey};
+  ${'' /* border-radius: 0.3rem; */}
   box-sizing: border-box;
   user-select: none;
+  ${p => !p.isAlive && cellIsNotAlive};
+  ${p => p.isAlive && cellIsAlive};
 `;
 
 export default function Grid({ state, setCell, isPaused }) {
