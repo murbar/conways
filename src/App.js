@@ -5,6 +5,7 @@ import { initGrid, stepGrid, countPopulation } from './gameLogic';
 import Grid from './Grid';
 import useInterval from './useInterval';
 import Footer from './components/Footer';
+import Controls from './components/Controls';
 
 const AppWrapper = styled.div`
   padding: 0 2rem 3rem;
@@ -95,10 +96,7 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
-      <Button onClick={playPause}>{isPaused ? 'Play' : 'Pause'}</Button>
-      {isPaused && <Button onClick={step}>Step</Button>}
-      {isPaused && <Button onClick={randomize}>Randomize</Button>}
-      {isPaused && <Button onClick={reset}>Clear</Button>}
+      <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset }} />
 
       <Stats>
         Generation <span>{genCount}</span>
