@@ -26,11 +26,12 @@ const GridDisplay = styled.div`
   ${media.desktop`
     position: fixed;
     left: calc(50vw - 4rem);
-    top: calc(50% - 25vw);
+    top: 50%;
+    transform: translateY(-50%);
     width: 50vw;
     height: 50vw;
-    ${'' /* max-width: 100vh;
-    max-height: 100vh; */}
+    max-width: 100vh;
+    max-height: 100vh;
   `}
 `;
 
