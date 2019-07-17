@@ -25,4 +25,11 @@ export default createGlobalStyle`
     font-weight: 400;
     ${'' /* text-transform: uppercase; */}
   }
+
+  a {
+    color: ${p => p.theme.colors.cream};
+    &:hover {
+      color: ${p => p.theme.colors.primary};
+    }
+  }
 `;
