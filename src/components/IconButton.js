@@ -11,7 +11,6 @@ export default styled.button`
   position: relative;
   &:hover {
     cursor: pointer;
-    background: ${p => p.theme.colors.blueGrey};
     color: ${p => p.theme.colors.cream};
   }
   &:focus {
