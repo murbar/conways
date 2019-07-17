@@ -8,7 +8,6 @@ const StyledContainer = styled.div`
   svg {
     height: 1em;
     color: crimson;
-    margin: 0 -0.25rem;
   }
 `;
 
