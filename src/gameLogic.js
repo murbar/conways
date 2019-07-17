@@ -5,7 +5,8 @@ export const initGrid = (size, random = false) =>
       Array(size)
         .fill()
         .map(col => {
-          return random ? Math.round(Math.random()) : 0;
+          if (random) return Math.random() < 0.333 ? 1 : 0;
+          return 0;
         })
     );
 
