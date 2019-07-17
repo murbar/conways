@@ -110,12 +110,10 @@ function App() {
   const isPaused = evolutionInterval === null;
   const [genCount, setGenCount] = useState(0);
 
-  const play = () => {
-    setEvolutionInterval(config.speed);
-  };
-
-  const pause = () => {
-    setEvolutionInterval(null);
+  const playPause = () => {
+    setEvolutionInterval(prev => {
+      return prev == null ? config.speed : null;
+    });
   };
 
   const randomize = () => {
@@ -152,9 +150,8 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
-      {isPaused && <Button onClick={play}>Play</Button>}
+      <Button onClick={playPause}>{isPaused ? 'Play' : 'Pause'}</Button>
       {isPaused && <Button onClick={step}>Step</Button>}
-      {!isPaused && <Button onClick={pause}>Pause</Button>}
       {isPaused && <Button onClick={randomize}>Randomize</Button>}
       {isPaused && <Button onClick={reset}>Clear</Button>}
 
