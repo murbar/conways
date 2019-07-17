@@ -7,6 +7,7 @@ const Styles = styled.div`
   display: flex;
   div {
     margin-right: 5rem;
+    padding: 0.5rem 0;
   }
   span {
     font-weight: bold;
