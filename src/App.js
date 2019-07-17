@@ -17,15 +17,10 @@ const AppWrapper = styled.div`
   `}
 `;
 
-const Stats = styled.p`
-  text-transform: uppercase;
-  font-size: 0.8em;
-  span {
-    font-weight: bold;
-    display: inline-block;
-    min-width: 5rem;
-    text-align: right;
-  }
+const About = styled.div``;
+
+const GridContainer = styled.div`
+  width: 50rem;
 `;
 
 const Button = styled.button`
@@ -93,7 +88,7 @@ function App() {
 
   return (
     <AppWrapper>
-      <header className="App-header">
+      <header>
         <h1>Conway's Game of Life</h1>
       </header>
 
@@ -103,13 +98,20 @@ function App() {
         <Stats genCount={genCount} popCount={popCount} />
       </GridContainer>
 
-      <div className="rules">
+      <About>
+        <h2>WTH is this?</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, natus dignissimos sit
+          labore debitis iste! Voluptates eaque exercitationem sed, vero velit dicta? Delectus
+          aliquam odit ex reprehenderit omnis repellat unde.
+        </p>
         <h2>Rules</h2>
         <ul>
           <li>If a cell is alive and has exactly 2 or 3 neighbors it stays alive</li>
           <li>If a cell is alive and it have less than 2 or more than 4 neighbors it dies</li>
           <li>If a cell is dead and it has exactly 3 live neighbors it comes to life</li>
         </ul>
+      </About>
       <Footer />
     </AppWrapper>
   );
