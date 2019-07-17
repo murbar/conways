@@ -24,8 +24,20 @@ const AppWrapper = styled.div`
 
 const About = styled.div``;
 
-const GridContainer = styled.div`
-  width: 50rem;
+const GameContainer = styled.div`
+  ${media.tablet`
+    width: 68rem;
+  `}
+  ${media.desktop`
+    position: fixed;
+    left: calc(50vw - 4rem);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45vw;
+
+    max-width: 80vh;
+    max-height: 100vh;
+  `}
 `;
 
 const Button = styled.button`
@@ -48,7 +60,7 @@ const Button = styled.button`
 
 function App() {
   const [config, setConfig] = useState({
-    gridSize: 32,
+    gridSize: 42,
     speed: 200
   });
   const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
@@ -97,11 +109,11 @@ function App() {
         <h1>Conway's Game of Life</h1>
       </header>
 
-      <GridContainer>
+      <GameContainer>
         <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset }} />
         <GridDisplay state={gridState} setCell={setCell} isPaused={isPaused} />
         <Stats genCount={genCount} popCount={popCount} />
-      </GridContainer>
+      </GameContainer>
 
       <About>
         <h2>WTH is this?</h2>

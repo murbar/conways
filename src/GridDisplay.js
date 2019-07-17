@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { media } from './styles/helpers';
 
+// padding on parent element is 2rem on the sides
+const GridAspectControl = styled.div`
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+`;
+
 const GridDisplay = styled.div`
   display: flex;
   flex-flow: wrap;
-  width: 100vw;
-  height: 100vw;
-  margin: 0 -2rem;
   border-top: 0.5px solid ${p => p.theme.colors.blueGrey};
   border-left: 0.5px solid ${p => p.theme.colors.blueGrey};
   overflow: hidden;
@@ -15,25 +26,6 @@ const GridDisplay = styled.div`
     width: calc(100% / ${p => p.size});
     height: calc(100% / ${p => p.size});
   }
-  ${media.phone`
-    margin: 0;
-    width: 50rem;
-    height: 50rem;
-  `}
-  ${media.tablet`
-    width: 60rem;
-    height: 60rem;
-  `}
-  ${media.desktop`
-    position: fixed;
-    left: calc(50vw - 4rem);
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50vw;
-    height: 50vw;
-    max-width: 100vh;
-    max-height: 100vh;
-  `}
 `;
 
 const cellIsAlive = css`
@@ -45,7 +37,7 @@ const cellIsAlive = css`
     display: block;
     position: relative;
     top: 100%;
-    height: 300%;
+    height: 400%;
     background: ${p => p.theme.colors.cellShadowGradient};
   }
 `;
@@ -88,23 +80,25 @@ export default function Grid({ state, setCell, isPaused }) {
   };
 
   return (
-    <GridDisplay size={size} draggable="false">
-      {state.map((row, i) => {
-        return row.map((isAlive, j) => {
-          return (
-            <CellDisplay
-              key={`${i}${j}`}
-              isAlive={!!isAlive}
-              onMouseDown={handleMouseDown}
-              onMouseEnter={handleMouseEnter}
-              draggable="false"
-              data-row={i}
-              data-col={j}
-              onTouchStart={handleMouseDown}
-            />
-          );
-        });
-      })}
-    </GridDisplay>
+    <GridAspectControl>
+      <GridDisplay size={size} draggable="false">
+        {state.map((row, i) => {
+          return row.map((isAlive, j) => {
+            return (
+              <CellDisplay
+                key={`${i}${j}`}
+                isAlive={!!isAlive}
+                onMouseDown={handleMouseDown}
+                onMouseEnter={handleMouseEnter}
+                draggable="false"
+                data-row={i}
+                data-col={j}
+                onTouchStart={handleMouseDown}
+              />
+            );
+          });
+        })}
+      </GridDisplay>
+    </GridAspectControl>
   );
 }
