@@ -17,8 +17,8 @@ const AppWrapper = styled.div`
     padding: 0 4rem 3rem;
   `}
   ${media.desktop`
-    width: 45vw;
-    margin: 0 55vw 0 0;
+    width: 50vw;
+    margin: 0 50vw 0 0;
   `}
 `;
 
@@ -30,10 +30,10 @@ const GameContainer = styled.div`
   `}
   ${media.desktop`
     position: fixed;
-    left: calc(50vw - 4rem);
     top: 50%;
     transform: translateY(-50%);
     width: 45vw;
+    left: calc(55vw - 4rem);
 
     max-width: 80vh;
     max-height: 100vh;
