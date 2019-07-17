@@ -49,14 +49,14 @@ const Button = styled.button`
 
 function App() {
   const [config, setConfig] = useState({
-    gridSize: 30,
+    gridSize: 32,
     speed: 200
   });
   const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
   const [evolutionInterval, setEvolutionInterval] = useState(null);
+  const [genCount, setGenCount] = useState(0);
   const popCount = countPopulation(gridState);
   const isPaused = evolutionInterval === null;
-  const [genCount, setGenCount] = useState(0);
 
   const playPause = () => {
     setEvolutionInterval(prev => {
@@ -99,7 +99,7 @@ function App() {
       </header>
 
       <GridContainer>
-      <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset }} />
+        <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset }} />
         <GridDisplay state={gridState} setCell={setCell} isPaused={isPaused} />
         <Stats genCount={genCount} popCount={popCount} />
       </GridContainer>
