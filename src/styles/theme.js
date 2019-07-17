@@ -13,7 +13,8 @@ const theme = {
     background: colors.blueBlack,
     foreground: colors.cream,
     primary: colors.blue,
-    secondary: colors.bluGrey
+    secondary: colors.bluGrey,
+    cellShadowGradient: `linear-gradient(hsla(196, 100%, 50%, 0.2), transparent)`
   },
   media
 };

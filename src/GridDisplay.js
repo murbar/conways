@@ -8,8 +8,9 @@ const GridDisplay = styled.div`
   width: 100vw;
   height: 100vw;
   margin: 0 -2rem;
-  border-top: 1px solid ${p => p.theme.colors.blueGrey};
-  border-left: 1px solid ${p => p.theme.colors.blueGrey};
+  border-top: 0.5px solid ${p => p.theme.colors.blueGrey};
+  border-left: 0.5px solid ${p => p.theme.colors.blueGrey};
+  overflow: hidden;
   & > div {
     width: calc(100% / ${p => p.size});
     height: calc(100% / ${p => p.size});
@@ -38,6 +39,15 @@ const GridDisplay = styled.div`
 const cellIsAlive = css`
   box-shadow: 0 0 0.75rem ${p => p.theme.colors.blue};
   border: none;
+  &:before {
+    content: '';
+    pointer-events: none;
+    display: block;
+    position: relative;
+    top: 100%;
+    height: 300%;
+    background: ${p => p.theme.colors.cellShadowGradient};
+  }
 `;
 
 const cellIsNotAlive = css`
@@ -48,11 +58,11 @@ const cellIsNotAlive = css`
 
 const CellDisplay = styled.div`
   background: ${p => (p.isAlive ? p.theme.colors.blue : 'transparent')};
-  border-right: 1px solid ${p => p.theme.colors.blueGrey};
-  border-bottom: 1px solid ${p => p.theme.colors.blueGrey};
-  ${'' /* border-radius: 0.3rem; */}
+  border-right: 0.5px solid ${p => p.theme.colors.blueGrey};
+  border-bottom: 0.5px solid ${p => p.theme.colors.blueGrey};
   box-sizing: border-box;
   user-select: none;
+  ${'' /* transition: background 0.05s linear; */}
   ${p => !p.isAlive && cellIsNotAlive};
   ${p => p.isAlive && cellIsAlive};
 `;
