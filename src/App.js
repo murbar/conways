@@ -12,8 +12,14 @@ const AppWrapper = styled.div`
   padding: 0 2rem 3rem;
   margin: 0 auto;
   position: relative;
+  min-width: 320px;
   ${media.phone`
     padding: 0 4rem 3rem;
+  `}
+  ${media.desktop`
+    padding: 0 4rem 3rem;
+    width: 45vw;
+    margin: 0 55vw 0 0;
   `}
 `;
 
