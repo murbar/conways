@@ -11,9 +11,9 @@ const ControlsWrapper = styled.div``;
 
 const IconButtonStep = styled(IconButton)`
   svg {
-    top: 10%;
-    left: 10%;
-    width: 80%;
+    width: 75%;
+    top: 12.5%;
+    left: 12.5%;
   }
 `;
 
