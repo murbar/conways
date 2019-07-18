@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import IconButton from './IconButton';
+import ChoiceToggle from './ChoiceToggle';
 import { ReactComponent as PlayIcon } from '../icons/play.svg';
 import { ReactComponent as PauseIcon } from '../icons/pause.svg';
 import { ReactComponent as StepIcon } from '../icons/forward.svg';
@@ -25,6 +26,15 @@ const RandomizeButton = styled(IconButton)`
   }
 `;
 
+const speedChoices = {
+  // '0.25x': 800,
+  '.25x': 800,
+  '.5x': 400,
+  '1x': 200,
+  '2x': 100,
+  '4x': 50
+};
+
 export default function Controls({ isPaused, callbacks }) {
   return (
     <ControlsWrapper>
@@ -47,6 +57,7 @@ export default function Controls({ isPaused, callbacks }) {
           </IconButton>
         </>
       )}
+      <ChoiceToggle choices={speedChoices} initial={'1x'} onToggle={callbacks.setSpeed} />
     </ControlsWrapper>
   );
 }

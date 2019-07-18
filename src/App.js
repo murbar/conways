@@ -82,6 +82,19 @@ function App() {
     });
   };
 
+  const setSpeed = speedMS => {
+    const speed = parseInt(speedMS);
+
+    if (!typeof speed === 'number') {
+      console.error('Speed must be a number');
+    } else {
+      setConfig(prev => {
+        if (!isPaused) setEvolutionInterval(speed);
+        return { ...prev, speed };
+      });
+    }
+  };
+
   useInterval(() => {
     step();
   }, evolutionInterval);
@@ -101,7 +114,7 @@ function App() {
       </header>
 
       <GameContainer>
-        <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset }} />
+        <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset, setSpeed }} />
         <GridDisplay state={gridState} setCell={setCell} isPaused={isPaused} />
         <Stats genCount={genCount} popCount={popCount} isPaused={isPaused} />
       </GameContainer>
