@@ -11,7 +11,7 @@ export default styled.button`
   position: relative;
   &:hover {
     cursor: pointer;
-    color: ${p => p.theme.colors.cream};
+    color: ${p => p.theme.colors.foreground};
   }
   &:focus {
     outline: none;
@@ -21,5 +21,9 @@ export default styled.button`
     top: 20%;
     left: 20%;
     width: 60%;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    color: ${p => p.theme.colors.secondary};
   }
 `;
