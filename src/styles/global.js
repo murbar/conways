@@ -15,16 +15,15 @@ export default createGlobalStyle`
     background: url(${bgBlocks}) no-repeat, ${p => p.theme.colors.background};
     font-size: 1.8rem;
     line-height: 1.5;
-    font-family: 'Rubik', sans-serif;
+    font-family: ${p => p.theme.fontFamily};
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rubik', sans-serif;
+    font-family: ${p => p.theme.fontFamily};
     font-weight: 400;
-    ${'' /* text-transform: uppercase; */}
   }
 
   a {
