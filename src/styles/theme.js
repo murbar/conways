@@ -13,9 +13,11 @@ const theme = {
     background: colors.blueBlack,
     foreground: colors.cream,
     primary: colors.blue,
-    secondary: colors.bluGrey,
+    secondary: colors.blueGrey,
     cellShadowGradient: `linear-gradient(hsla(196, 100%, 50%, 0.2), transparent)`
   },
+  inputBorderRadius: `0.5rem`,
+  fontFamily: "'Rubik', sans-serif",
   media
 };
 
