@@ -104,7 +104,8 @@ function App() {
     p: playPause,
     r: randomize,
     c: reset,
-    s: step
+    s: step,
+    l: () => console.table(gridState)
   });
 
   return (
