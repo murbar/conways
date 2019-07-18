@@ -33,7 +33,6 @@ const RandomizeButton = styled(IconButton)`
 `;
 
 const speedChoices = {
-  // '0.25x': 800,
   '.25x': 800,
   '.5x': 400,
   '1x': 200,
@@ -50,18 +49,23 @@ export default function Controls({ isPaused, callbacks }) {
       >
         {isPaused ? <PlayIcon /> : <PauseIcon />}
       </IconButton>
-      {isPaused && (
-        <>
-          <StepButton onClick={callbacks.step} title="Step through simulation (S)">
-            <StepIcon />
-          </StepButton>
-          <RandomizeButton onClick={callbacks.randomize} title="Randomize cells (R)">
-            <RandomizeIcon />
-          </RandomizeButton>
-          <IconButton onClick={callbacks.reset} title="Clear all cells (C)">
-            <ResetIcon />
-          </IconButton>
+
+      <StepButton onClick={callbacks.step} title="Step through simulation (S)" disabled={!isPaused}>
+        <StepIcon />
+      </StepButton>
+      <RandomizeButton
+        onClick={callbacks.randomize}
+        title="Randomize cells (R)"
+        disabled={!isPaused}
+      >
+        <RandomizeIcon />
+      </RandomizeButton>
+      <IconButton onClick={callbacks.reset} title="Clear all cells (C)" disabled={!isPaused}>
+        <ResetIcon />
+      </IconButton>
+
       {/* <Button onClick={() => callbacks.setGrid(gliderGun)}>Glider preset</Button> */}
+
       <ChoiceToggle choices={speedChoices} initial={'1x'} onToggle={callbacks.setSpeed} />
     </ControlsWrapper>
   );
