@@ -107,12 +107,20 @@ function App() {
     step();
   }, evolutionInterval);
 
+  const logStatePretty = () => {
+    // pretty print grid state for debug & easy copy/paste
+    let log = '[';
+    gridState.forEach(row => (log += `[${row.join(', ')}]\n`));
+    log += ']';
+    console.log(log);
+  };
+
   useHotKeys({
     p: playPause,
     r: randomize,
     c: reset,
     s: step,
-    l: () => console.table(gridState)
+    l: logStatePretty
   });
 
   return (
