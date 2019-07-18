@@ -9,7 +9,7 @@ export default styled.button`
   color: ${p => p.theme.colors.cream};
   font-size: 0.9em;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: ${p => p.theme.inputBorderRadius};
   &:hover {
     cursor: pointer;
     background: ${p => p.theme.colors.blue};
