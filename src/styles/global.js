@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import bgBlocks from '../images/bg-blocks.svg';
 
 export default createGlobalStyle`
   * { 
@@ -11,7 +12,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     color: ${p => p.theme.colors.foreground};
-    background: ${p => p.theme.colors.background};
+    background: url(${bgBlocks}) no-repeat, ${p => p.theme.colors.background};
     font-size: 1.8rem;
     line-height: 1.5;
     font-family: 'Rubik', sans-serif;
