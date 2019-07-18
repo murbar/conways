@@ -65,7 +65,11 @@ export default function ChoiceToggle({ choices, onToggle, initial }) {
   return (
     <Styles>
       {labels.map(l => (
-        <button key={l} className={selected === l && 'selected'} onClick={() => handleClick(l)}>
+        <button
+          key={l}
+          className={selected === l ? 'selected' : undefined}
+          onClick={() => handleClick(l)}
+        >
           {l}
         </button>
       ))}
