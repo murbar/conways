@@ -7,6 +7,7 @@ import { ReactComponent as PauseIcon } from '../icons/pause.svg';
 import { ReactComponent as StepIcon } from '../icons/forward.svg';
 import { ReactComponent as RandomizeIcon } from '../icons/shuffle.svg';
 import { ReactComponent as ResetIcon } from '../icons/x.svg';
+import { gliderGun, oscillators } from '../presets';
 
 const ControlsWrapper = styled.div`
   display: flex;
@@ -60,8 +61,7 @@ export default function Controls({ isPaused, callbacks }) {
           <IconButton onClick={callbacks.reset} title="Clear all cells (C)">
             <ResetIcon />
           </IconButton>
-        </>
-      )}
+      {/* <Button onClick={() => callbacks.setGrid(gliderGun)}>Glider preset</Button> */}
       <ChoiceToggle choices={speedChoices} initial={'1x'} onToggle={callbacks.setSpeed} />
     </ControlsWrapper>
   );
