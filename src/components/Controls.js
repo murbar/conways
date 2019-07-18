@@ -30,19 +30,19 @@ export default function Controls({ isPaused, callbacks }) {
     <ControlsWrapper>
       <IconButton
         onClick={callbacks.playPause}
-        title={isPaused ? 'Start simulation' : 'Pause simulation'}
+        title={isPaused ? 'Start simulation (P)' : 'Pause simulation (P)'}
       >
         {isPaused ? <PlayIcon /> : <PauseIcon />}
       </IconButton>
       {isPaused && (
         <>
-          <StepButton onClick={callbacks.step} title="Step through simulation">
+          <StepButton onClick={callbacks.step} title="Step through simulation (S)">
             <StepIcon />
           </StepButton>
-          <RandomizeButton onClick={callbacks.randomize} title="Randomize cells">
+          <RandomizeButton onClick={callbacks.randomize} title="Randomize cells (R)">
             <RandomizeIcon />
           </RandomizeButton>
-          <IconButton onClick={callbacks.reset} title="Clear all cells">
+          <IconButton onClick={callbacks.reset} title="Clear all cells (C)">
             <ResetIcon />
           </IconButton>
         </>
