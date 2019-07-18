@@ -21,6 +21,7 @@ const GridDisplay = styled.div`
   border-top: 0.5px solid ${p => p.theme.colors.blueGrey};
   border-left: 0.5px solid ${p => p.theme.colors.blueGrey};
   overflow: hidden;
+  background: ${p => p.theme.colors.background};
   & > div {
     width: calc(100% / ${p => p.size});
     height: calc(100% / ${p => p.size});
