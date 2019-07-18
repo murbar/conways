@@ -95,10 +95,17 @@ function App() {
     }
   };
 
+  const setGrid = gridState => {
+    if (!(gridState.length <= config.gridSize)) {
+      console.error('Grid preset too large for current grid');
+    } else {
+      setGridState(gridState);
+    }
+  };
+
   useInterval(() => {
     step();
   }, evolutionInterval);
-
 
   useHotKeys({
     p: playPause,
