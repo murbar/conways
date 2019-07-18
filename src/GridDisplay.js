@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { media } from './styles/helpers';
 
 // padding on parent element is 2rem on the sides
 const GridAspectControl = styled.div`
@@ -63,7 +62,7 @@ export default function Grid({ state, setCell, isPaused }) {
   const [initialDragCellIsAlive, setInitialDragCellIsAlive] = useState(false);
   const size = state.length;
 
-  const handleMouseDown = e => {
+  const handleMouseDownCell = e => {
     if (isPaused) {
       const { row, col } = e.target.dataset;
       const isAlive = !!state[row][col];
@@ -72,7 +71,7 @@ export default function Grid({ state, setCell, isPaused }) {
     }
   };
 
-  const handleMouseEnter = e => {
+  const handleMouseEnterCell = e => {
     if (isPaused && e.buttons === 1) {
       const { row, col } = e.target.dataset;
       setCell(row, col, !initialDragCellIsAlive);
@@ -88,12 +87,12 @@ export default function Grid({ state, setCell, isPaused }) {
               <CellDisplay
                 key={`${i}${j}`}
                 isAlive={!!isAlive}
-                onMouseDown={handleMouseDown}
-                onMouseEnter={handleMouseEnter}
+                onMouseDown={handleMouseDownCell}
+                onMouseEnter={handleMouseEnterCell}
                 draggable="false"
                 data-row={i}
                 data-col={j}
-                onTouchStart={handleMouseDown}
+                onTouchStart={handleMouseDownCell}
               />
             );
           });

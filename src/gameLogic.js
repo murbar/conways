@@ -15,12 +15,13 @@ const countNeighbors = (grid, x, y) => {
   let count = 0;
   for (let i = -1; i < 2; i++) {
     for (let j = -1; j < 2; j++) {
+      // "wrap" around the grid
       const row = (x + i + size) % size;
       const col = (y + j + size) % size;
       count += grid[row][col];
     }
   }
-  count -= grid[x][y]; // don't count self
+  count -= grid[x][y]; // discount self
   return count;
 };
 
