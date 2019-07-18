@@ -118,7 +118,7 @@ function App() {
   return (
     <AppWrapper>
       <header>
-        <h1>Conway's Game of Life</h1>
+        <h1>The Game of Life</h1>
       </header>
 
       <GameContainer>
@@ -128,17 +128,17 @@ function App() {
       </GameContainer>
 
       <About>
-        <h2>WTH is this?</h2>
+        <h2>What is it?</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, natus dignissimos sit
-          labore debitis iste! Voluptates eaque exercitationem sed, vero velit dicta? Delectus
-          aliquam odit ex reprehenderit omnis repellat unde.
+          Invented by Cambridge mathematician John Conway, the Game of Life is a game with no
+          players. More simulation than game, cells on a grid live and die according to a simple set
+          of rules. Upon each iteration of the grid:
         </p>
-        <h2>Rules</h2>
         <ul>
-          <li>If a cell is alive and has exactly 2 or 3 neighbors it stays alive</li>
-          <li>If a cell is alive and it have less than 2 or more than 4 neighbors it dies</li>
-          <li>If a cell is dead and it has exactly 3 live neighbors it comes to life</li>
+          <li>A living cell with less than 2 neighbors will die from loneliness</li>
+          <li>A living cell with more than 3 neighbors will die from overcrowding</li>
+          <li>A living cell with 2 or 3 neighbors is contented and lives on</li>
+          <li>An empty cell with exactly 3 neighbors will spontaneously come to life</li>
         </ul>
       </About>
       <Footer />
