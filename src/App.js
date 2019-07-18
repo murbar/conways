@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { media } from './styles/helpers';
-import { initGrid, stepGrid, countPopulation } from './gameLogic';
+import { initGrid, stepGrid, countPopulation } from './lifeLogic';
 import GridDisplay from './GridDisplay';
 import useInterval from './useInterval';
 import useHotKeys from './useHotKeys';
