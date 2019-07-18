@@ -8,7 +8,12 @@ import { ReactComponent as StepIcon } from '../icons/forward.svg';
 import { ReactComponent as RandomizeIcon } from '../icons/shuffle.svg';
 import { ReactComponent as ResetIcon } from '../icons/x.svg';
 
-const ControlsWrapper = styled.div``;
+const ControlsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
 
 const StepButton = styled(IconButton)`
   svg {
