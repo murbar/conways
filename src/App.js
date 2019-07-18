@@ -4,7 +4,7 @@ import { media } from './styles/helpers';
 import { initGrid, stepGrid, countPopulation } from './gameLogic';
 import GridDisplay from './GridDisplay';
 import useInterval from './useInterval';
-import useKeyboardShortcuts from './useKeyboardShortcuts';
+import useHotKeys from './useHotKeys';
 import Footer from './components/Footer';
 import Controls from './components/Controls';
 import Stats from './components/Stats';
@@ -87,7 +87,7 @@ function App() {
   }, evolutionInterval);
 
 
-  useKeyboardShortcuts({
+  useHotKeys({
     p: playPause,
     r: randomize,
     c: reset,
