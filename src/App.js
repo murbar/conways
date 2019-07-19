@@ -8,6 +8,7 @@ import useHotKeys from './useHotKeys';
 import Footer from './components/Footer';
 import Controls from './components/Controls';
 import Stats from './components/Stats';
+import About from './components/About';
 
 const AppWrapper = styled.div`
   padding: 0 2rem 3rem;
@@ -22,8 +23,6 @@ const AppWrapper = styled.div`
     margin: 0 50vw 0 0;
   `}
 `;
-
-const About = styled.div``;
 
 const GameContainer = styled.div`
   ${media.tablet`
@@ -136,20 +135,7 @@ function App() {
         <Stats genCount={genCount} popCount={popCount} isPaused={isPaused} />
       </GameContainer>
 
-      <About>
-        <h2>What is it?</h2>
-        <p>
-          Invented by Cambridge mathematician John Conway, the Game of Life is a game with no
-          players. More simulation than game, cells on a grid live and die according to a simple set
-          of rules. Upon each iteration of the grid:
-        </p>
-        <ul>
-          <li>A living cell with less than 2 neighbors will die from loneliness</li>
-          <li>A living cell with more than 3 neighbors will die from overcrowding</li>
-          <li>A living cell with 2 or 3 neighbors is contented and lives on</li>
-          <li>An empty cell with exactly 3 neighbors will spontaneously come to life</li>
-        </ul>
-      </About>
+      <About />
       <Footer />
     </AppWrapper>
   );
