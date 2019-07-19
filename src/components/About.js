@@ -36,14 +36,14 @@ export default function About() {
         range of fields including physics, biology, math, economics, philosophy and art.{' '}
       </p>
 
-      <h2>Technical Considerations</h2>
+      {/* <h2>Technical Considerations</h2>
 
       <p>
         Polya process, React, double-buffers, canvas, possible improvments... Lorem ipsum dolor sit
         amet consectetur adipisicing elit. Ab sapiente excepturi adipisci fuga animi cumque
         veritatis error rerum quis, laboriosam dolore delectus porro dolorem rem enim obcaecati
         ipsum distinctio aspernatur.
-      </p>
+      </p> */}
     </Styles>
   );
 }
