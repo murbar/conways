@@ -6,7 +6,7 @@ import { ReactComponent as PlayIcon } from '../icons/play.svg';
 import { ReactComponent as PauseIcon } from '../icons/pause.svg';
 import { ReactComponent as StepIcon } from '../icons/forward.svg';
 import { ReactComponent as RandomizeIcon } from '../icons/shuffle.svg';
-import { ReactComponent as ResetIcon } from '../icons/x.svg';
+import { ReactComponent as ResetIcon } from '../icons/grid.svg';
 import { gliderGun, oscillators, spaceRake, spaceships } from '../presets';
 
 const ControlsWrapper = styled.div`
