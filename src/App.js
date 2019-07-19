@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { media } from './styles/helpers';
 import { initGrid, stepGrid, countPopulation } from './lifeLogic';
-import GridDisplay from './GridDisplay';
+import GridDisplay from './components/GridDisplay';
 import useInterval from './useInterval';
 import useHotKeys from './useHotKeys';
 import Footer from './components/Footer';
