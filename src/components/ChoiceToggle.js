@@ -15,7 +15,7 @@ const Styles = styled.div`
     background: none;
     margin: 0;
     padding: 0.75rem 0.75rem;
-    color: ${p => p.theme.colors.secondary};
+    color: ${p => p.theme.colors.primary};
     cursor: pointer;
   }
   button:hover {
