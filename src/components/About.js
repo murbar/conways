@@ -1,83 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as PlayIcon } from '../icons/play.svg';
-import { ReactComponent as PauseIcon } from '../icons/pause.svg';
-import { ReactComponent as StepIcon } from '../icons/forward.svg';
-import { ReactComponent as RandomizeIcon } from '../icons/shuffle.svg';
-import { ReactComponent as ResetIcon } from '../icons/grid.svg';
-import { media } from '../styles/helpers';
 
-const Styles = styled.div`
-  .controls {
-    svg {
-      width: 1em;
-      transform: translateY(0.1em);
-    }
-    ${'' /* line-height: 1.8; */}
-  }
-`;
-
-const Instructions = styled.div`
-  background: rgba(0, 0, 0, 0.5);
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  font-size: 0.8em;
-  margin-top: 1rem;
-  h2 {
-    margin: 0;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-    li {
-      list-style: none;
-      line-height: 2;
-    }
-  }
-  ${media.phone`
-    padding: 1.5rem 2.5rem;
-    font-size: 0.9em;
-  `}
-`;
-
-const HotKey = styled.kbd`
-  background: ${p => p.theme.colors.secondary};
-  padding: 0.25em 0.5em;
-  border-radius: 0.5rem;
-  font-size: 0.8em;
-  font-family: inherit;
-  text-transform: uppercase;
-  box-shadow: 1px 1px black, 1px 1px grey inset;
-  margin-left: 0.5rem;
-`;
+const Styles = styled.div``;
 
 export default function About() {
   return (
     <Styles>
-      <Instructions>
-        <h2>Get Started</h2>
-        <ul className="controls">
-          <li>
-            <PlayIcon /> <strong>Play</strong> / <PauseIcon /> <strong>Pause</strong> the simulation{' '}
-            <HotKey>P</HotKey>
-          </li>
-          <li>
-            <StepIcon /> <strong>Step</strong> forward one iteration <HotKey>S</HotKey>
-          </li>
-          <li>
-            <RandomizeIcon /> <strong>Randomize</strong> the grid <HotKey>R</HotKey>
-          </li>
-          <li>
-            <ResetIcon /> <strong>Clear</strong> the grid <HotKey>C</HotKey>
-          </li>
-          <li>
-            Control the <strong>rate of evolution</strong> with the speed toggle and change a cell's
-            state with a <strong>click, or drag across the grid</strong> to easily edit multiple
-            cells
-          </li>
-        </ul>
-      </Instructions>
-      <h2>What is it?</h2>
+      <h2>WTH is it?</h2>
       <p>
         Invented by Cambridge mathematician John Conway in 1970, the Game of Life is a "game" with
         no players. More simulation than game, cells on a grid live and die according to a simple

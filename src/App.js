@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Controls from './components/Controls';
 import Stats from './components/Stats';
 import About from './components/About';
+import Header from './components/Header';
 
 const AppWrapper = styled.div`
   padding: 0 2rem 3rem;
@@ -126,10 +127,7 @@ function App() {
 
   return (
     <AppWrapper>
-      <header>
-        <h1>The Game of Life</h1>
-      </header>
-
+      <Header />
       <GameContainer>
         <Controls
           isPaused={isPaused}
