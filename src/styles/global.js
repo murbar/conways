@@ -14,7 +14,7 @@ export default createGlobalStyle`
     color: ${p => p.theme.colors.foreground};
     background: url(${bgBlocks}) no-repeat, ${p => p.theme.colors.background};
     font-size: 1.8rem;
-    line-height: 1.5;
+    line-height: 1.7;
     font-family: ${p => p.theme.fontFamily};
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
