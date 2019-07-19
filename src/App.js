@@ -64,9 +64,10 @@ function App() {
   };
 
   const step = () => {
+    setGridState(() => {
     setGenCount(prev => prev + 1);
-    const newState = stepGrid(gridState);
-    setGridState(newState);
+      return stepGrid(gridState);
+    });
   };
 
   const reset = () => {
