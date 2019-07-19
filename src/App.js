@@ -64,7 +64,7 @@ function App() {
 
   const step = () => {
     setGridState(() => {
-    setGenCount(prev => prev + 1);
+      setGenCount(prev => prev + 1);
       return stepGrid(gridState);
     });
   };
@@ -95,11 +95,12 @@ function App() {
     }
   };
 
-  const setGrid = gridState => {
-    if (!(gridState.length <= config.gridSize)) {
+  const loadPreset = gridPreset => {
+    if (!(gridPreset.length <= config.gridSize)) {
       console.error('Grid preset too large for current grid');
     } else {
-      setGridState(gridState);
+      // duplicate before setting
+      setGridState(gridPreset.map(row => [...row]));
     }
   };
 
@@ -130,7 +131,10 @@ function App() {
       </header>
 
       <GameContainer>
-        <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset, setSpeed }} />
+        <Controls
+          isPaused={isPaused}
+          callbacks={{ playPause, step, randomize, reset, setSpeed, loadPreset }}
+        />
         <GridDisplay state={gridState} setCell={setCell} isPaused={isPaused} />
         <Stats genCount={genCount} popCount={popCount} isPaused={isPaused} />
       </GameContainer>
