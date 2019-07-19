@@ -10,26 +10,31 @@ export default function About() {
       <p>
         Invented by Cambridge mathematician John Conway in 1970, the Game of Life is a "game" with
         no players. More simulation than game, cells on a grid live and die according to a simple
-        set of rules. A cell has eight neighboring cells and it's next state is determined by the
-        number of those cells that are alive. Upon each iteration of the grid:
+        set of rules. A cell's fate is determined by the number of neighboring cells that are alive.
+        Upon each iteration of the grid:
       </p>
       <ul>
         <li>A living cell with less than 2 neighbors will die from loneliness</li>
         <li>A living cell with more than 3 neighbors will die from overcrowding</li>
         <li>A living cell with 2 or 3 neighbors is contented and lives on</li>
-        <li>An empty cell with exactly 3 neighbors will spontaneously come to life</li>
+        <li>An empty cell with exactly 3 neighbors will spring to life</li>
       </ul>
       <p>
-        Conway's game was inspired by work done in the 1940s by John von Neumann who was searching
-        for a hypothetical machine that could self-replicate. The <em>Game of Life</em> was the
+        Conway's game was inspired by work done in the 1940s by John von Neumann who was working on
+        an idea for a hypothetical self-replicating machine. The <em>Game of Life</em> is a classic{' '}
+        <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a> and the
         product of Conway's efforts to simplify von Neumann's ideas.
       </p>
       <p>
-        The work is of interest to computer scientists because it is possible to build the
-        elementary parts of a computer, like memory and logic gates, inside the simulation. This
-        makes <em>Life</em> a universal Turing machine &mdash; theoretically as powerful as any
-        computer with unlimited time and memory and capable of computing anything that can be
-        computed algorithmically.
+        The work is of interest to computer scientists because it's possible to build the elementary
+        parts of a computer, including memory and{' '}
+        <a href="https://sucs.org/~pwb/report/lifecomp.html">logic gates</a>, inside the simulation.
+        This makes <em>Life</em> a{' '}
+        <a href="https://en.wikipedia.org/wiki/Universal_Turing_machine">
+          universal Turing machine
+        </a>{' '}
+        &mdash; theoretically capable of computing anything that can be computed algorithmically,
+        given a large enough grid and sufficient time.
       </p>
       <p>
         The game's concepts of emergent complexity and self-organization are influential in a wide
