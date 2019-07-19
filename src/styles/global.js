@@ -32,4 +32,10 @@ export default createGlobalStyle`
       color: ${p => p.theme.colors.primary};
     }
   }
+
+  code {
+    background: ${p => p.theme.colors.secondary};
+    padding: 0.25em 0.4rem;
+    border-radius: 0.25em;
+  }
 `;
