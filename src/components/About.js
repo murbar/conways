@@ -9,9 +9,9 @@ export default function About() {
       <h2>WTH is it?</h2>
       <p>
         Invented by Cambridge mathematician John Conway in 1970, the Game of Life is a "game" with
-        no players. More simulation than game, cells on a grid live and die according to a simple
-        set of rules. A cell's fate is determined by the number of neighboring cells that are alive.
-        Upon each iteration of the grid:
+        no players. Cells on a grid live and die according to a simple set of rules. A cell's fate
+        is determined by the number of neighboring cells that are alive. Upon each iteration of the
+        grid:
       </p>
       <ul>
         <li>A living cell with less than 2 neighbors will die from loneliness</li>
