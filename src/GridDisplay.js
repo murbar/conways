@@ -54,7 +54,6 @@ const CellDisplay = styled.div`
   border-bottom: 0.5px solid ${p => p.theme.colors.blueGrey};
   box-sizing: border-box;
   user-select: none;
-  ${'' /* transition: background 0.05s linear; */}
   ${p => !p.isAlive && cellIsNotAlive};
   ${p => p.isAlive && cellIsAlive};
 `;
