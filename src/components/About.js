@@ -6,7 +6,7 @@ const Styles = styled.div``;
 export default function About() {
   return (
     <Styles>
-      <h2>WTH is it?</h2>
+      <h2 id="what">WTH is it?</h2>
       <p>
         Invented by Cambridge mathematician John Conway in 1970, the Game of Life is a "game" with
         no players. Cells on a grid live and die according to a simple set of rules. A cell's fate
@@ -39,7 +39,7 @@ export default function About() {
         The game's concepts of emergent complexity and self-organization are influential in a wide
         range of fields including physics, biology, math, economics, philosophy and art.{' '}
       </p>
-      <h2>Big Ideas</h2>
+      <h2 id="ideas">Big Ideas</h2>
       <p>
         I’d encountered Conway’s game years ago after I read{' '}
         <a href="https://www.amazon.com/Emergence-Connected-Brains-Cities-Software/dp/0684868768">
@@ -69,7 +69,7 @@ export default function About() {
         These ideas still interest me today so I was excited to build my own simple version Conway’s
         game.
       </p>
-      <h2>My Process</h2>
+      <h2 id="process">My Process</h2>
       <p>
         Polya's famous method for solving mathematical problems is widely applicable to other fields
         of study, especially computer science and algorithm design. He outlines four steps to follow
