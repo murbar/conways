@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320px" height="320px" viewBox="0 0 320 320" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="ships-preset" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ship" transform="translate(40.000000, 80.000000)" fill="currentColor">
+            <path d="M240,119 L240,159 L200,159 L200,119 L200,80 L240,80 L240,119 Z M160,159 L200,159 L200,199 L160,199 L120,199 L80,199 L40,199 L40,159 L80,159 L120,159 L160,159 Z M80,0 L120,0 L120,40 L80,40 L80,0 Z M0,40 L40,40 L40,80 L0,80 L0,40 Z M0,119 L40,119 L40,159 L0,159 L0,119 Z M160,40 L200,40 L200,80 L160,80 L160,40 Z" id="Combined-Shape"></path>
+        </g>
+        <g id="grid" stroke="currentColor" stroke-width="5">
+            <path d="M40.5,-2.84217094e-14 L40.5,320" id="Line-3"></path>
+            <path d="M160,-119.5 L160,200.5" id="Line-3-Copy-6" transform="translate(160.000000, 40.500000) rotate(-270.000000) translate(-160.000000, -40.500000) "></path>
+            <path d="M160,-80 L160,240" id="Line-3-Copy-7" transform="translate(160.000000, 80.000000) rotate(-270.000000) translate(-160.000000, -80.000000) "></path>
+            <path d="M160,-40 L160,280" id="Line-3-Copy-8" transform="translate(160.000000, 120.000000) rotate(-270.000000) translate(-160.000000, -120.000000) "></path>
+            <path d="M160,-6.19171381e-13 L160,320" id="Line-3-Copy-9" transform="translate(160.000000, 160.000000) rotate(-270.000000) translate(-160.000000, -160.000000) "></path>
+            <path d="M160,40 L160,360" id="Line-3-Copy-10" transform="translate(160.000000, 200.000000) rotate(-270.000000) translate(-160.000000, -200.000000) "></path>
+            <path d="M160,80 L160,400" id="Line-3-Copy-11" transform="translate(160.000000, 240.000000) rotate(-270.000000) translate(-160.000000, -240.000000) "></path>
+            <path d="M160,120 L160,440" id="Line-3-Copy-12" transform="translate(160.000000, 280.000000) rotate(-270.000000) translate(-160.000000, -280.000000) "></path>
+            <path d="M80,-5.68434189e-14 L80,320" id="Line-3"></path>
+            <path d="M120.5,-5.68434189e-14 L120.5,320" id="Line-3-Copy"></path>
+            <path d="M160.5,0 L160.5,320" id="Line-3-Copy-2"></path>
+            <path d="M200,2.84217094e-14 L200,320" id="Line-3-Copy-3"></path>
+            <path d="M240,2.84217094e-14 L240,320" id="Line-3-Copy-4"></path>
+            <path d="M280,2.84217094e-14 L280,320" id="Line-3-Copy-5"></path>
+            <rect id="Rectangle" x="2.5" y="2.5" width="315" height="315"></rect>
+        </g>
+    </g>
+</svg>
