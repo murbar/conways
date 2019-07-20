@@ -112,7 +112,7 @@ function App() {
   const logStatePretty = () => {
     // pretty print grid state for debug & easy copy/paste
     let log = '[';
-    gridState.forEach(row => (log += `[${row.join(', ')}]\n`));
+    gridState.forEach(row => (log += `[${row.join(', ')}],\n`));
     log += ']';
     console.log(log);
   };
