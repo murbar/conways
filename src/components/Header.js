@@ -113,9 +113,15 @@ const Instructions = () => {
               <ResetIcon /> <strong>Clear</strong> the grid <HotKey>C</HotKey>
             </li>
             <li>
-              Control the <strong>rate of evolution</strong> with the speed toggle and change a
-              cell's state with a <strong>click, or drag across the grid</strong> to easily edit
-              multiple cells
+              Control the <strong>rate of evolution</strong> with the speed toggle
+            </li>
+            <li>
+              Change a cell's state with a <strong>click, or drag across the grid</strong> to easily
+              edit multiple cells
+            </li>
+            <li>
+              Cells on the edge of the grid "wrap around" to interact with cells on the opposite
+              edge
             </li>
           </ul>
         </Content>
