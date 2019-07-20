@@ -22,8 +22,8 @@ const HowTo = styled.div`
   span {
     color: ${p => p.theme.colors.primary};
     svg {
-      height: 1em;
-      transform: translateY(15%);
+      height: 1.5em;
+      transform: translateY(25%);
       margin-right: 0.5rem;
     }
   }
