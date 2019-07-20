@@ -7,7 +7,6 @@ import { ReactComponent as PauseIcon } from '../icons/pause.svg';
 import { ReactComponent as StepIcon } from '../icons/forward.svg';
 import { ReactComponent as RandomizeIcon } from '../icons/shuffle.svg';
 import { ReactComponent as ResetIcon } from '../icons/grid.svg';
-import { gliderGun, oscillators, spaceRake, spaceships } from '../presets';
 
 const ControlsWrapper = styled.div`
   display: flex;
@@ -55,9 +54,6 @@ export default function Controls({ isPaused, callbacks }) {
       <IconButton onClick={callbacks.reset} title="Clear all cells (C)" disabled={!isPaused}>
         <ResetIcon />
       </IconButton>
-
-      {/* <button onClick={() => callbacks.loadPreset(spaceships)}>preset</button> */}
-
       <ChoiceToggle choices={speedChoices} initial={'1x'} onToggle={callbacks.setSpeed} />
     </ControlsWrapper>
   );
