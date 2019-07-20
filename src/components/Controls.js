@@ -16,14 +16,6 @@ const ControlsWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const StepButton = styled(IconButton)`
-  svg {
-    width: 75%;
-    top: 12.5%;
-    left: 12.5%;
-  }
-`;
-
 const RandomizeButton = styled(IconButton)`
   svg {
     width: 55%;
@@ -50,9 +42,9 @@ export default function Controls({ isPaused, callbacks }) {
         {isPaused ? <PlayIcon /> : <PauseIcon />}
       </IconButton>
 
-      <StepButton onClick={callbacks.step} title="Step through simulation (S)" disabled={!isPaused}>
+      <IconButton onClick={callbacks.step} title="Step through simulation (S)" disabled={!isPaused}>
         <StepIcon />
-      </StepButton>
+      </IconButton>
       <RandomizeButton
         onClick={callbacks.randomize}
         title="Randomize cells (R)"
