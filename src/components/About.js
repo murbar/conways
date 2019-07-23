@@ -39,7 +39,7 @@ export default function About() {
         The game's concepts of emergent complexity and self-organization are influential in a wide
         range of fields including physics, biology, math, economics, philosophy and art.{' '}
       </p>
-      <h2 id="ideas">Big Ideas</h2>
+      <h2 id="ideas">Big ideas</h2>
       <p>
         I’d encountered Conway’s game years ago after I read{' '}
         <a href="https://www.amazon.com/Emergence-Connected-Brains-Cities-Software/dp/0684868768">
@@ -69,7 +69,7 @@ export default function About() {
         These ideas still interest me today so I was excited to build my own simple version Conway’s
         game.
       </p>
-      <h2 id="process">My Process</h2>
+      <h2 id="process">My process</h2>
       <p>
         Polya's famous method for solving mathematical problems is widely applicable to other fields
         of study, especially computer science and algorithm design. He outlines four steps to follow
