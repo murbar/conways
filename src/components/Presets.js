@@ -30,7 +30,6 @@ const Preset = styled.div`
   }
   .load {
     margin: 1rem 0 0 9.5rem;
-    ${'' /* text-align: right; */}
   }
 `;
 

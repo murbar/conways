@@ -1,11 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Styles = styled.div``;
 
 export default function About() {
   return (
-    <Styles>
+    <div>
       <h2 id="what">WTH is it?</h2>
       <p>
         Invented by Cambridge mathematician John Conway in 1970, the Game of Life is a "game" with
@@ -190,6 +187,6 @@ export default function About() {
         I enjoyed building this project, learned a few things along the way, and hope you have some
         fun tinkering in the Game of Life!
       </p>
-    </Styles>
+    </div>
   );
 }
