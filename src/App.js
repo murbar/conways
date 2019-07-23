@@ -65,9 +65,9 @@ function App() {
   };
 
   const step = () => {
-    setGridState(() => {
-      setGenCount(prev => prev + 1);
-      return stepGrid(gridState);
+    setGridState(prevGrid => {
+      setGenCount(prevCount => prevCount + 1);
+      return stepGrid(prevGrid);
     });
   };
 
@@ -101,12 +101,12 @@ function App() {
     if (!(gridPreset.length <= config.gridSize)) {
       console.error('Grid preset too large for current grid');
     } else {
-      setGridState(() => {
-        // if (!isPaused) playPause();
-        // duplicate before setting
-        setEvolutionInterval(null);
-        return gridPreset.map(row => [...row]);
-      });
+      setEvolutionInterval(null);
+      // have to wait for the last interval to finish
+      setTimeout(() => {
+        setGenCount(0);
+        setGridState(gridPreset.map(row => [...row]));
+      }, config.speed);
     }
   };
 
