@@ -9,6 +9,7 @@ import { ReactComponent as ResetIcon } from '../icons/grid.svg';
 import { ReactComponent as HideIcon } from '../icons/x.svg';
 import { media } from '../styles/helpers';
 import IconButton from './IconButton';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Styles = styled.div`
   h1 {
@@ -135,6 +136,17 @@ export default function Header() {
     <Styles>
       <h1>The Game of Life</h1>
       <Instructions />
+      <ul>
+        <li>
+          <AnchorLink href="#what">What is it?</AnchorLink>
+        </li>
+        <li>
+          <AnchorLink href="#ideas">Big ideas</AnchorLink>
+        </li>
+        <li>
+          <AnchorLink href="#process">My process</AnchorLink>
+        </li>
+      </ul>
     </Styles>
   );
 }
