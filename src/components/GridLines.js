@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { withTheme } from 'styled-components';
 
+const dpr = window.devicePixelRatio || 1;
+
 function GridLines({ theme, dimension }) {
   const ref = useRef();
-  const dpr = window.devicePixelRatio || 1;
 
   useEffect(() => {
     const c = ref.current;
@@ -35,7 +36,7 @@ function GridLines({ theme, dimension }) {
       ctx.lineTo(linePos, gridSize);
       ctx.stroke();
     }
-  }, [theme, dimension, dpr]);
+  }, [theme, dimension]);
 
   return <canvas ref={ref} />;
 }

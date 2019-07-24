@@ -26,19 +26,11 @@ const Styles = styled.div`
   }
 `;
 
+const dpr = window.devicePixelRatio || 1;
+
 function Canvas({ state, setCell, isPaused, theme }) {
   const canvasRef = useRef();
   const ctxRef = useRef();
-  const dpr = window.devicePixelRatio || 1;
-
-  const setup = () => {
-    const c = canvasRef.current;
-    const rect = c.getBoundingClientRect();
-    c.width = rect.width * dpr;
-    c.height = rect.width * dpr;
-    ctxRef.current = c.getContext('2d');
-    ctxRef.current.scale(dpr, dpr);
-  };
 
   const drawGrid = () => {
     const c = canvasRef.current;
@@ -103,7 +95,12 @@ function Canvas({ state, setCell, isPaused, theme }) {
   };
 
   useEffect(() => {
-    setup();
+    const c = canvasRef.current;
+    const rect = c.getBoundingClientRect();
+    c.width = rect.width * dpr;
+    c.height = rect.width * dpr;
+    ctxRef.current = c.getContext('2d');
+    ctxRef.current.scale(dpr, dpr);
   }, []);
 
   useEffect(() => {
