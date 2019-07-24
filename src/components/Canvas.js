@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { withTheme } from 'styled-components';
 
-const GridAspectControl = styled.div`
+const SquareAspectControl = styled.div`
   width: 100%;
   padding-top: 100%;
   position: relative;
@@ -153,14 +153,14 @@ function Canvas({ state, setCell, isPaused, theme }) {
   }, [state]);
 
   return (
-    <GridAspectControl>
+    <SquareAspectControl>
       <Styles>
         <canvas id="canvas" ref={canvasRef} onMouseMove={handleMouseMove}>
           Your browser cannot display this content. :(
         </canvas>
         <canvas id="grid-canvas" ref={gridCanvasRef} />
       </Styles>
-    </GridAspectControl>
+    </SquareAspectControl>
   );
 }
 
