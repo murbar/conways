@@ -44,10 +44,11 @@ const GameContainer = styled.div`
 
 function App() {
   const [config, setConfig] = useState({
-    gridSize: 42,
+    gridCols: 42,
+    gridRows: 42,
     speed: 200
   });
-  const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
+  const [gridState, setGridState] = useState(initGrid(config.gridRows, config.gridCols, true));
   const [evolutionInterval, setEvolutionInterval] = useState(null);
   const [genCount, setGenCount] = useState(0);
   const popCount = countPopulation(gridState);
@@ -60,7 +61,7 @@ function App() {
   };
 
   const randomize = () => {
-    const newState = initGrid(config.gridSize, true);
+    const newState = initGrid(config.gridRows, config.gridCols, true);
     setGridState(newState);
   };
 
@@ -73,7 +74,7 @@ function App() {
 
   const reset = () => {
     setGenCount(0);
-    const newState = initGrid(config.gridSize);
+    const newState = initGrid(config.gridRows, config.gridCols);
     setGridState(newState);
   };
 
@@ -98,7 +99,7 @@ function App() {
   };
 
   const loadPreset = gridPreset => {
-    if (!(gridPreset.length <= config.gridSize)) {
+    if (!(gridPreset.length <= config.gridRows && gridPreset[0].length <= config.gridCols)) {
       console.error('Grid preset too large for current grid');
     } else {
       setEvolutionInterval(null);
