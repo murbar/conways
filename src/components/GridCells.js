@@ -17,6 +17,7 @@ function GridCells({ theme, gridState }) {
     const cellSize = canvas.width / dpr / numGridCols;
     canvas.height = cellSize * numGridRows * dpr;
     ctx.scale(dpr, dpr);
+    ctx.fillStyle = theme.colors.primary;
 
     for (let row = 0; row < numGridRows; row++) {
       for (let col = 0; col < numGridCols; col++) {
@@ -24,12 +25,7 @@ function GridCells({ theme, gridState }) {
         const xPos = col * cellSize;
         const yPos = row * cellSize;
 
-        ctx.fillStyle = theme.colors.primary;
-        if (cellAlive) {
-          ctx.fillRect(xPos, yPos, cellSize, cellSize);
-        } else {
-          ctx.clearRect(xPos, yPos, cellSize, cellSize);
-        }
+        if (cellAlive) ctx.fillRect(xPos, yPos, cellSize, cellSize);
       }
     }
   }, [theme, gridState]);
