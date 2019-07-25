@@ -5,7 +5,7 @@ const dpr = window.devicePixelRatio || 1;
 
 function GridInteractionLayer({ gridState, isPaused, theme }) {
   const canvasRef = useRef();
-  const gridSize = gridState.length;
+  const numGridRows = gridState.length;
 
   const getMousePosition = e => {
     const rect = e.target.getBoundingClientRect();
@@ -16,7 +16,7 @@ function GridInteractionLayer({ gridState, isPaused, theme }) {
 
   const getGridCoordinates = e => {
     const canvas = canvasRef.current;
-    const cellSize = canvas.width / dpr / gridSize;
+    const cellSize = canvas.width / dpr / numGridRows;
     const [xPos, yPos] = getMousePosition(e);
     const row = Math.floor(Math.abs(yPos) / cellSize);
     const col = Math.floor(Math.abs(xPos) / cellSize);
@@ -26,7 +26,7 @@ function GridInteractionLayer({ gridState, isPaused, theme }) {
   const drawCellHover = (row, col) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    const cellSize = canvas.width / dpr / gridSize;
+    const cellSize = canvas.width / dpr / numGridRows;
 
     const xPos = col * cellSize;
     const yPos = row * cellSize;
@@ -40,9 +40,20 @@ function GridInteractionLayer({ gridState, isPaused, theme }) {
     }
   };
 
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
   const handleMouseMove = e => {
     const [row, col] = getGridCoordinates(e);
     drawCellHover(row, col);
+  };
+
+  const handleMouseLeave = e => {
+    clearCanvas();
   };
 
   useEffect(() => {
@@ -55,7 +66,14 @@ function GridInteractionLayer({ gridState, isPaused, theme }) {
     ctx.scale(dpr, dpr);
   }, []);
 
-  return <canvas id="interaction-canvas" ref={canvasRef} onMouseMove={handleMouseMove} />;
+  return (
+    <canvas
+      id="interaction-canvas"
+      ref={canvasRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    />
+  );
 }
 
 export default withTheme(GridInteractionLayer);
