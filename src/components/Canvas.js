@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled, { withTheme } from 'styled-components';
 import GridLines from './GridLines';
 import CellShadows from './CellShadows';
+import InteractionLayer from './InteractionLayer';
 
 const SquareAspectControl = styled.div`
   width: 100%;
@@ -16,14 +17,13 @@ const SquareAspectControl = styled.div`
   }
 `;
 
-const Styles = styled.div`
+const CanvasStyles = styled.div`
   position: relative;
   canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    ${'' /* border: 1px solid ${p => p.theme.colors.secondary}; */}
   }
 `;
 
@@ -57,44 +57,6 @@ function Canvas({ state, setCell, isPaused, theme }) {
     }
   };
 
-  const drawCellHover = (row, col) => {
-    const c = canvasRef.current;
-    const ctx = ctxRef.current;
-    const gridSize = state.length;
-    const cellSize = c.width / dpr / gridSize;
-
-    const xPos = col * cellSize;
-    const yPos = row * cellSize;
-
-    ctx.beginPath();
-    ctx.fillStyle = 'red';
-    ctx.fillRect(xPos, yPos, cellSize, cellSize);
-    ctx.closePath();
-  };
-
-  const getMousePosition = e => {
-    const rect = e.target.getBoundingClientRect();
-    const xPos = e.clientX - rect.left;
-    const yPos = e.clientY - rect.top;
-    return [xPos, yPos];
-  };
-
-  const getGridCoordinates = e => {
-    const c = canvasRef.current;
-    const gridSize = state.length;
-    const cellSize = c.width / dpr / gridSize;
-    const [xPos, yPos] = getMousePosition(e);
-    const row = Math.floor(Math.abs(yPos) / cellSize);
-    const col = Math.floor(Math.abs(xPos) / cellSize);
-    return [row, col];
-  };
-
-  const handleMouseMove = e => {
-    const [row, col] = getGridCoordinates(e);
-    // drawCellHover(row, col);
-    console.log(row, col);
-  };
-
   useEffect(() => {
     const c = canvasRef.current;
     const rect = c.getBoundingClientRect();
@@ -110,11 +72,14 @@ function Canvas({ state, setCell, isPaused, theme }) {
 
   return (
     <SquareAspectControl>
+      <CanvasStyles>
         <CellShadows gridState={state} />
+        <canvas id="cells-canvas" ref={canvasRef}>
           Your browser cannot display this content. :(
         </canvas>
-        <GridLines dimension={state.length} />
-      </Styles>
+        <GridLines gridSize={state.length} />
+        <InteractionLayer gridState={state} isPaused={isPaused} />
+      </CanvasStyles>
     </SquareAspectControl>
   );
 }
