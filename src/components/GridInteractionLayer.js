@@ -113,8 +113,8 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
 
     setupCanvas();
 
+    // ensure mouse position calc is correct
     const withDelay = debounce(setupCanvas, 100);
-
     window.addEventListener('resize', withDelay);
     return () => window.removeEventListener('resize', withDelay);
   }, [numGridCols, numGridRows]);
