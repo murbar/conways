@@ -1,6 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { withTheme } from 'styled-components';
 
+const debounce = (fn, time) => {
+  let timeout;
+
+  return function() {
+    const functionCall = () => fn.apply(this, arguments);
+
+    clearTimeout(timeout);
+    timeout = setTimeout(functionCall, time);
+  };
+};
+
 const dpr = window.devicePixelRatio || 1;
 
 function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
@@ -91,7 +102,6 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
 
   useEffect(() => {
     const setupCanvas = () => {
-      console.log('firing');
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
       const gridRect = canvas.getBoundingClientRect();
@@ -103,8 +113,10 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
 
     setupCanvas();
 
-    window.addEventListener('resize', setupCanvas);
-    return () => window.removeEventListener('resize', setupCanvas);
+    const withDelay = debounce(setupCanvas, 100);
+
+    window.addEventListener('resize', withDelay);
+    return () => window.removeEventListener('resize', withDelay);
   }, [numGridCols, numGridRows]);
 
   return (
