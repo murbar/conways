@@ -90,13 +90,21 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   };
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    const gridRect = canvas.getBoundingClientRect();
-    canvas.width = gridRect.width * dpr;
-    const cellSize = canvas.width / dpr / numGridCols;
-    canvas.height = cellSize * numGridRows * dpr;
-    ctx.scale(dpr, dpr);
+    const setupCanvas = () => {
+      console.log('firing');
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      const gridRect = canvas.getBoundingClientRect();
+      canvas.width = gridRect.width * dpr;
+      const cellSize = canvas.width / dpr / numGridCols;
+      canvas.height = cellSize * numGridRows * dpr;
+      ctx.scale(dpr, dpr);
+    };
+
+    setupCanvas();
+
+    window.addEventListener('resize', setupCanvas);
+    return () => window.removeEventListener('resize', setupCanvas);
   }, [numGridCols, numGridRows]);
 
   return (
