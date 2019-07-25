@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from './components/Header';
-import GridDisplay from './components/GridDisplay';
-import Controls from './components/Controls';
-import Stats from './components/Stats';
-import About from './components/About';
-import Presets from './components/Presets';
-import Footer from './components/Footer';
 import { media } from './styles/helpers';
 import { initGrid, stepGrid, countPopulation } from './lifeLogic';
 import useInterval from './useInterval';
 import useHotKeys from './useHotKeys';
+import Header from './components/Header';
+import Controls from './components/Controls';
+import Grid from './components/Grid';
+import Stats from './components/Stats';
+import Presets from './components/Presets';
+import About from './components/About';
+import Footer from './components/Footer';
 
 const AppWrapper = styled.div`
   padding: 0 2rem 3rem;
@@ -36,7 +36,6 @@ const GameContainer = styled.div`
     transform: translateY(-50%);
     width: 45vw;
     left: calc(55vw - 4rem);
-
     max-width: 80vh;
     max-height: 100vh;
   `}
@@ -44,10 +43,11 @@ const GameContainer = styled.div`
 
 function App() {
   const [config, setConfig] = useState({
-    gridSize: 42,
+    gridCols: 42,
+    gridRows: 42,
     speed: 200
   });
-  const [gridState, setGridState] = useState(initGrid(config.gridSize, true));
+  const [gridState, setGridState] = useState(initGrid(config.gridRows, config.gridCols, true));
   const [evolutionInterval, setEvolutionInterval] = useState(null);
   const [genCount, setGenCount] = useState(0);
   const popCount = countPopulation(gridState);
@@ -60,7 +60,7 @@ function App() {
   };
 
   const randomize = () => {
-    const newState = initGrid(config.gridSize, true);
+    const newState = initGrid(config.gridRows, config.gridCols, true);
     setGridState(newState);
   };
 
@@ -73,7 +73,7 @@ function App() {
 
   const reset = () => {
     setGenCount(0);
-    const newState = initGrid(config.gridSize);
+    const newState = initGrid(config.gridRows, config.gridCols);
     setGridState(newState);
   };
 
@@ -98,7 +98,7 @@ function App() {
   };
 
   const loadPreset = gridPreset => {
-    if (!(gridPreset.length <= config.gridSize)) {
+    if (!(gridPreset.length <= config.gridRows && gridPreset[0].length <= config.gridCols)) {
       console.error('Grid preset too large for current grid');
     } else {
       setEvolutionInterval(null);
@@ -135,7 +135,7 @@ function App() {
       <Header />
       <GameContainer>
         <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset, setSpeed }} />
-        <GridDisplay state={gridState} setCell={setCell} isPaused={isPaused} />
+        <Grid state={gridState} isPaused={isPaused} callbacks={{ setCell, playPause }} />
         <Stats genCount={genCount} popCount={popCount} isPaused={isPaused} />
       </GameContainer>
       <Presets loadPreset={loadPreset} />

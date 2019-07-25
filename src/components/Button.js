@@ -18,4 +18,8 @@ export default styled.button`
   &:focus {
     outline: none;
   }
+  svg {
+    height: 1.25em;
+    margin-left: 0.25em;
+  }
 `;

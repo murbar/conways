@@ -1,8 +1,8 @@
-export const initGrid = (size, random = false) =>
-  Array(size)
+export const initGrid = (rows, cols, random = false) =>
+  Array(rows)
     .fill()
     .map(row =>
-      Array(size)
+      Array(cols)
         .fill()
         .map(col => {
           if (random) return Math.random() < 0.25 ? 1 : 0;
