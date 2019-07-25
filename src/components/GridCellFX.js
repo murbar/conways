@@ -38,11 +38,7 @@ function GridCellFX({ theme, gridState }) {
     }
   }, [theme, gridState]);
 
-  return (
-    <div>
-      <canvas id="shadows-canvas" ref={canvasRef} />
-    </div>
-  );
+  return <canvas id="shadows-canvas" ref={canvasRef} />;
 }
 
 export default withTheme(GridCellFX);

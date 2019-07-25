@@ -34,11 +34,7 @@ function GridCells({ theme, gridState }) {
     }
   }, [theme, gridState]);
 
-  return (
-    <div>
-      <canvas id="cells-canvas" ref={canvasRef} />
-    </div>
-  );
+  return <canvas id="cells-canvas" ref={canvasRef} />;
 }
 
 export default withTheme(GridCells);
