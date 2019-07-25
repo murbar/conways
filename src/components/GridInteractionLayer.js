@@ -1,11 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { withTheme } from 'styled-components';
 
 const dpr = window.devicePixelRatio || 1;
 
-function GridInteractionLayer({ gridState, isPaused, theme }) {
+function GridInteractionLayer({ gridState, isPaused, setCell, theme }) {
   const canvasRef = useRef();
+  const [initialDragCellIsAlive, setInitialDragCellIsAlive] = useState(false);
   const numGridRows = gridState.length;
+  const numGridCols = gridState[0].length;
 
   const getMousePosition = e => {
     const rect = e.target.getBoundingClientRect();
@@ -56,15 +58,26 @@ function GridInteractionLayer({ gridState, isPaused, theme }) {
     clearCanvas();
   };
 
+  const handleMouseDown = e => {
+    if (isPaused) {
+      const [row, col] = getGridCoordinates(e);
+      const isAlive = !!gridState[row][col];
+      setInitialDragCellIsAlive(isAlive);
+      setCell(row, col, !isAlive);
+      clearCanvas();
+    }
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const gridRect = canvas.getBoundingClientRect();
 
     canvas.width = gridRect.width * dpr;
-    canvas.height = gridRect.width * dpr;
+    const cellSize = canvas.width / dpr / numGridCols;
+    canvas.height = cellSize * numGridRows * dpr;
     ctx.scale(dpr, dpr);
-  }, []);
+  }, [numGridCols, numGridRows]);
 
   return (
     <canvas
@@ -72,6 +85,7 @@ function GridInteractionLayer({ gridState, isPaused, theme }) {
       ref={canvasRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
     />
   );
 }
