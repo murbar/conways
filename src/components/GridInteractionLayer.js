@@ -29,6 +29,8 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   };
 
   const drawCellHover = (row, col) => {
+    if (!isPaused) return;
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const cellSize = canvas.width / dpr / numGridRows;
