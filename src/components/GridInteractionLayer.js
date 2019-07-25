@@ -36,7 +36,7 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (!cellIsAlive && isPaused) {
+    if (!cellIsAlive) {
       ctx.fillStyle = theme.colors.secondary;
       ctx.fillRect(xPos, yPos, cellSize, cellSize);
     }
@@ -55,16 +55,18 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   };
 
   const handleMouseLeave = e => {
-    clearCanvas();
+    if (isPaused) clearCanvas();
   };
 
   const handleMouseDown = e => {
-    if (isPaused) {
+    if (!isPaused) return;
+
       const [row, col] = getGridCoordinates(e);
       const isAlive = !!gridState[row][col];
       setInitialDragCellIsAlive(isAlive);
-      setCell(row, col, !isAlive);
+    callbacks.setCell(row, col, !isAlive);
       clearCanvas();
+  };
 
   const handleDoubleClick = () => {
     if (!isPaused) callbacks.playPause();
