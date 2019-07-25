@@ -10,13 +10,13 @@ function GridCellFX({ theme, gridState }) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const gridRect = canvas.getBoundingClientRect();
+    const numGridRows = gridState.length;
+    const numGridCols = gridState[0].length;
 
     canvas.width = gridRect.width * dpr;
-    canvas.height = gridRect.width * dpr;
+    const cellSize = canvas.width / dpr / numGridCols;
+    canvas.height = cellSize * numGridRows * dpr;
     ctx.scale(dpr, dpr);
-
-    const gridSize = gridState.length;
-    const cellSize = canvas.width / dpr / gridSize;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -25,8 +25,8 @@ function GridCellFX({ theme, gridState }) {
     gradient.addColorStop(1, 'transparent');
     ctx.fillStyle = gradient;
 
-    for (let row = 0; row < gridSize; row++) {
-      for (let col = 0; col < gridSize; col++) {
+    for (let row = 0; row < numGridRows; row++) {
+      for (let col = 0; col < numGridCols; col++) {
         const cellIsAlive = !!gridState[row][col];
         const xPos = col * cellSize;
         const yPos = row * cellSize + cellSize;
