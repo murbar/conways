@@ -32,9 +32,9 @@ function Grid({ state, callbacks, isPaused }) {
   return (
     <SquareAspectControl>
       <CanvasLayers>
+        <GridLines gridState={state} />
         <GridCellFX gridState={state} />
         <GridCells gridState={state} />
-        <GridLines gridState={state} />
         <GridInteractionLayer gridState={state} isPaused={isPaused} callbacks={callbacks} />
       </CanvasLayers>
     </SquareAspectControl>
