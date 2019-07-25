@@ -34,8 +34,7 @@ function Grid({ state, setCell, isPaused }) {
       <CanvasLayers>
         <GridCellFX gridState={state} />
         <GridCells gridState={state} />
-        <GridLines gridSize={state.length} />
-        <GridInteractionLayer gridState={state} isPaused={isPaused} />
+        <GridLines gridState={state} />
       </CanvasLayers>
     </SquareAspectControl>
   );
