@@ -3,7 +3,7 @@ import { withTheme } from 'styled-components';
 
 const dpr = window.devicePixelRatio || 1;
 
-function GridInteractionLayer({ gridState, isPaused, setCell, theme }) {
+function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   const canvasRef = useRef();
   const [initialDragCellIsAlive, setInitialDragCellIsAlive] = useState(false);
   const numGridRows = gridState.length;
@@ -65,7 +65,9 @@ function GridInteractionLayer({ gridState, isPaused, setCell, theme }) {
       setInitialDragCellIsAlive(isAlive);
       setCell(row, col, !isAlive);
       clearCanvas();
-    }
+
+  const handleDoubleClick = () => {
+    if (!isPaused) callbacks.playPause();
   };
 
   useEffect(() => {
@@ -86,6 +88,7 @@ function GridInteractionLayer({ gridState, isPaused, setCell, theme }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseDown={handleMouseDown}
+      onDoubleClick={handleDoubleClick}
     />
   );
 }

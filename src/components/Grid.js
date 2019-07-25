@@ -28,14 +28,14 @@ const CanvasLayers = styled.div`
   }
 `;
 
-function Grid({ state, setCell, isPaused }) {
+function Grid({ state, callbacks, isPaused }) {
   return (
     <SquareAspectControl>
       <CanvasLayers>
         <GridCellFX gridState={state} />
         <GridCells gridState={state} />
         <GridLines gridState={state} />
-        <GridInteractionLayer gridState={state} isPaused={isPaused} setCell={setCell} />
+        <GridInteractionLayer gridState={state} isPaused={isPaused} callbacks={callbacks} />
       </CanvasLayers>
     </SquareAspectControl>
   );
