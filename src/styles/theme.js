@@ -14,7 +14,7 @@ const theme = {
     foreground: colors.cream,
     primary: colors.blue,
     secondary: colors.blueGrey,
-    cellShadowGradient: `linear-gradient(hsla(196, 100%, 50%, 0.2), transparent)`
+    cellShadowGradientStart: 'hsla(196, 100%, 50%, 0.2)'
   },
   inputBorderRadius: `0.5rem`,
   fontFamily: "'Rubik', sans-serif",
