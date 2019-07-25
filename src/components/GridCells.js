@@ -18,6 +18,8 @@ function GridCells({ theme, gridState }) {
     canvas.height = cellSize * numGridRows * dpr;
     ctx.scale(dpr, dpr);
     ctx.fillStyle = theme.colors.primary;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = theme.colors.primary;
 
     for (let row = 0; row < numGridRows; row++) {
       for (let col = 0; col < numGridCols; col++) {
