@@ -5,11 +5,12 @@ import { ReactComponent as ShipsPreview } from '../images/ships-preset.svg';
 import { ReactComponent as GlidersPreview } from '../images/gliders-preset.svg';
 import { ReactComponent as GunPreview } from '../images/gun-preset.svg';
 import { ReactComponent as OscilPreview } from '../images/oscill-preset.svg';
+import { ReactComponent as Arrow } from '../icons/arrow-right.svg';
 import { gliderGun, gliderArray, oscillators, spaceships } from '../presetGrids';
 
 const Preset = styled.div`
   margin-bottom: 3rem;
-  svg {
+  > svg {
     width: 8rem;
     height: 8rem;
     position: absolute;
@@ -45,7 +46,9 @@ export default function Presets({ loadPreset }) {
           Three of the smallest <em>elementary</em> ships are demonstrated here.
         </div>
         <div className="load">
-          <Button onClick={() => loadPreset(spaceships)}>Load Spaceships</Button>
+          <Button onClick={() => loadPreset(spaceships)}>
+            Load Spaceships <Arrow />
+          </Button>
         </div>
       </Preset>
       <Preset>
@@ -57,7 +60,9 @@ export default function Presets({ loadPreset }) {
           information over large distances in complex systems.
         </div>
         <div className="load">
-          <Button onClick={() => loadPreset(gliderArray)}>Load Glider Array</Button>
+          <Button onClick={() => loadPreset(gliderArray)}>
+            Load Glider Array <Arrow />
+          </Button>
         </div>
       </Preset>
       <Preset>
@@ -69,7 +74,9 @@ export default function Presets({ loadPreset }) {
           to their opposite edge, this gun will eventually be destroyed by its own fire.
         </div>
         <div className="load">
-          <Button onClick={() => loadPreset(gliderGun)}>Load Glider Gun</Button>
+          <Button onClick={() => loadPreset(gliderGun)}>
+            Load Glider Gun <Arrow />
+          </Button>
         </div>
       </Preset>
       <Preset>
@@ -81,7 +88,9 @@ export default function Presets({ loadPreset }) {
           are <em>spaceships</em>.
         </div>
         <div className="load">
-          <Button onClick={() => loadPreset(oscillators)}>Load Oscillators</Button>
+          <Button onClick={() => loadPreset(oscillators)}>
+            Load Oscillators <Arrow />
+          </Button>
         </div>
       </Preset>
     </>
