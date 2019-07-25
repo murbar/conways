@@ -3,7 +3,7 @@ import { withTheme } from 'styled-components';
 
 const dpr = window.devicePixelRatio || 1;
 
-function InteractionLayer({ gridState, isPaused, theme }) {
+function GridInteractionLayer({ gridState, isPaused, theme }) {
   const canvasRef = useRef();
   const gridSize = gridState.length;
 
@@ -58,4 +58,4 @@ function InteractionLayer({ gridState, isPaused, theme }) {
   return <canvas id="interaction-canvas" ref={canvasRef} onMouseMove={handleMouseMove} />;
 }
 
-export default withTheme(InteractionLayer);
+export default withTheme(GridInteractionLayer);

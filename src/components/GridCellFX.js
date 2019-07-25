@@ -3,7 +3,7 @@ import { withTheme } from 'styled-components';
 
 const dpr = window.devicePixelRatio || 1;
 
-function CellShadows({ theme, gridState }) {
+function GridCellFX({ theme, gridState }) {
   const canvasRef = useRef();
 
   useEffect(() => {
@@ -45,4 +45,4 @@ function CellShadows({ theme, gridState }) {
   );
 }
 
-export default withTheme(CellShadows);
+export default withTheme(GridCellFX);
