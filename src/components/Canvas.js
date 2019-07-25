@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { withTheme } from 'styled-components';
 import GridLines from './GridLines';
+import CellShadows from './CellShadows';
 
 const SquareAspectControl = styled.div`
   width: 100%;
@@ -109,8 +110,7 @@ function Canvas({ state, setCell, isPaused, theme }) {
 
   return (
     <SquareAspectControl>
-      <Styles>
-        <canvas id="canvas" ref={canvasRef} onMouseMove={handleMouseMove}>
+        <CellShadows gridState={state} />
           Your browser cannot display this content. :(
         </canvas>
         <GridLines dimension={state.length} />
