@@ -5,13 +5,13 @@ const dpr = window.devicePixelRatio || 1;
 
 function GridLines({ theme, gridState }) {
   const canvasRef = useRef();
+  const numGridRows = gridState.length;
+  const numGridCols = gridState[0].length;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const rect = canvas.getBoundingClientRect();
-    const numGridRows = gridState.length;
-    const numGridCols = gridState[0].length;
 
     canvas.width = rect.width * dpr;
     // cells will always be square even if grid is not
@@ -44,7 +44,7 @@ function GridLines({ theme, gridState }) {
       ctx.lineTo(linePos, gridHeight);
       ctx.stroke();
     }
-  }, [theme, gridState]);
+  }, [numGridCols, numGridRows, theme]);
 
   return <canvas id="grid-canvas" ref={canvasRef} />;
 }
