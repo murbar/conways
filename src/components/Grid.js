@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import GridLines from './GridLines';
-import GridCellFX from './GridCellFX';
 import GridCells from './GridCells';
+import GridCellFX from './GridCellFX';
 import GridInteractionLayer from './GridInteractionLayer';
 
 const SquareAspectControl = styled.div`
@@ -35,6 +35,7 @@ function Grid({ state, setCell, isPaused }) {
         <GridCellFX gridState={state} />
         <GridCells gridState={state} />
         <GridLines gridState={state} />
+        <GridInteractionLayer gridState={state} isPaused={isPaused} setCell={setCell} />
       </CanvasLayers>
     </SquareAspectControl>
   );
