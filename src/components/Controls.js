@@ -24,11 +24,11 @@ const RandomizeButton = styled(IconButton)`
 `;
 
 const speedChoices = {
-  '.25x': 800,
-  '.5x': 400,
-  '1x': 200,
-  '2x': 100,
-  '4x': 50
+  '.25x': 400,
+  '.5x': 200,
+  '1x': 100,
+  '2x': 50,
+  '4x': 25
 };
 
 export default function Controls({ isPaused, callbacks }) {
