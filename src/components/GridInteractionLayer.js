@@ -6,8 +6,11 @@ const dpr = window.devicePixelRatio || 1;
 function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   const canvasRef = useRef();
   const [initialDragCellIsAlive, setInitialDragCellIsAlive] = useState(false);
+  const [prevInteractionCellID, setPrevInteractionCellID] = useState('');
   const numGridRows = gridState.length;
   const numGridCols = gridState[0].length;
+
+  const getCellId = (row, col) => `r${row}c${col}`;
 
   const getMousePosition = e => {
     const rect = e.target.getBoundingClientRect();
@@ -50,8 +53,19 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   };
 
   const handleMouseMove = e => {
+    if (!isPaused) return;
+
     const [row, col] = getGridCoordinates(e);
-    drawCellHover(row, col);
+    const mouseButtonIsDown = e.buttons === 1;
+    const cellId = getCellId(row, col);
+    if (mouseButtonIsDown) {
+      if (cellId !== prevInteractionCellID) {
+        setPrevInteractionCellID(cellId);
+        callbacks.setCell(row, col, !initialDragCellIsAlive);
+      }
+    } else {
+      drawCellHover(row, col);
+    }
   };
 
   const handleMouseLeave = e => {
@@ -61,11 +75,12 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   const handleMouseDown = e => {
     if (!isPaused) return;
 
-      const [row, col] = getGridCoordinates(e);
-      const isAlive = !!gridState[row][col];
-      setInitialDragCellIsAlive(isAlive);
+    const [row, col] = getGridCoordinates(e);
+    const isAlive = !!gridState[row][col];
+    setInitialDragCellIsAlive(isAlive);
+    setPrevInteractionCellID(getCellId(row, col));
     callbacks.setCell(row, col, !isAlive);
-      clearCanvas();
+    clearCanvas();
   };
 
   const handleDoubleClick = () => {
@@ -76,7 +91,6 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const gridRect = canvas.getBoundingClientRect();
-
     canvas.width = gridRect.width * dpr;
     const cellSize = canvas.width / dpr / numGridCols;
     canvas.height = cellSize * numGridRows * dpr;
