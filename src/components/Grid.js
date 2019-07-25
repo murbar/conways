@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import GridLines from './GridLines';
 import GridCellFX from './GridCellFX';
 import GridCells from './GridCells';
@@ -28,7 +28,7 @@ const CanvasLayers = styled.div`
   }
 `;
 
-function Grid({ state, setCell, isPaused, theme }) {
+function Grid({ state, setCell, isPaused }) {
   return (
     <SquareAspectControl>
       <CanvasLayers>
@@ -41,4 +41,4 @@ function Grid({ state, setCell, isPaused, theme }) {
   );
 }
 
-export default withTheme(Grid);
+export default Grid;
