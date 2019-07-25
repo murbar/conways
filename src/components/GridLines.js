@@ -23,13 +23,14 @@ function GridLines({ theme, gridState }) {
     const gridHeight = cellSize * numGridRows;
 
     ctx.strokeStyle = theme.colors.secondary;
-    ctx.lineWidth = 1;
 
+    ctx.lineWidth = 2;
     ctx.strokeRect(0, 0, gridWidth, gridHeight);
 
     const rightBoundary = gridWidth - Math.floor(cellSize);
     const bottomBoundary = gridHeight - Math.floor(cellSize);
 
+    ctx.lineWidth = 1;
     // row lines
     for (let linePos = cellSize; linePos < bottomBoundary; linePos += cellSize) {
       ctx.beginPath();
