@@ -18,6 +18,7 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
   const canvasRef = useRef();
   const [initialDragCellIsAlive, setInitialDragCellIsAlive] = useState(false);
   const [prevInteractionCellID, setPrevInteractionCellID] = useState('');
+  const [ready, setReady] = useState(false);
   const numGridRows = gridState.length;
   const numGridCols = gridState[0].length;
 
@@ -48,14 +49,14 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
 
     const xPos = col * cellSize;
     const yPos = row * cellSize;
-    const cellIsAlive = !!gridState[row][col];
+      const cellIsAlive = !!gridState[row][col];
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (!cellIsAlive) {
-      ctx.fillStyle = theme.colors.secondary;
-      ctx.fillRect(xPos, yPos, cellSize, cellSize);
-    }
+      if (!cellIsAlive) {
+        ctx.fillStyle = theme.colors.secondary;
+        ctx.fillRect(xPos, yPos, cellSize, cellSize);
+      }
   };
 
   const clearCanvas = () => {
@@ -109,6 +110,7 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
       const cellSize = canvas.width / dpr / numGridCols;
       canvas.height = cellSize * numGridRows * dpr;
       ctx.scale(dpr, dpr);
+      setReady(true);
     };
 
     setupCanvas();
@@ -123,10 +125,12 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
     <canvas
       id="interaction-canvas"
       ref={canvasRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onDoubleClick={handleDoubleClick}
+      {...ready && {
+        onMouseMove: handleMouseMove,
+        onMouseLeave: handleMouseLeave,
+        onMouseDown: handleMouseDown,
+        onDoubleClick: handleDoubleClick
+      }}
     />
   );
 }
