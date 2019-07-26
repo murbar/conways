@@ -49,14 +49,14 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
 
     const xPos = col * cellSize;
     const yPos = row * cellSize;
-      const cellIsAlive = !!gridState[row][col];
+    const cellIsAlive = !!gridState[row][col];
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      if (!cellIsAlive) {
-        ctx.fillStyle = theme.colors.secondary;
-        ctx.fillRect(xPos, yPos, cellSize, cellSize);
-      }
+    if (!cellIsAlive) {
+      ctx.fillStyle = theme.colors.secondary;
+      ctx.fillRect(xPos, yPos, cellSize, cellSize);
+    }
   };
 
   const clearCanvas = () => {
