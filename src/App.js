@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 import { media } from './styles/helpers';
 import { initGrid, stepGrid, countPopulation } from './lifeLogic';
 import useInterval from './useInterval';
@@ -117,6 +118,11 @@ function App() {
     log += ']';
     console.log(log);
   };
+
+  useEffect(() => {
+    ReactGA.initialize('UA-140727716-3');
+    ReactGA.pageview('/');
+  }, []);
 
   useInterval(() => {
     step();
