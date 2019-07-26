@@ -11,13 +11,14 @@ export const initGrid = (rows, cols, random = false) =>
     );
 
 const countNeighbors = (grid, x, y) => {
-  const size = grid.length;
+  const numRows = grid.length;
+  const numCols = grid[0].length;
   let count = 0;
   for (let i = -1; i < 2; i++) {
     for (let j = -1; j < 2; j++) {
       // "wrap" around the grid
-      const row = (x + i + size) % size;
-      const col = (y + j + size) % size;
+      const row = (x + i + numRows) % numRows;
+      const col = (y + j + numCols) % numCols;
       count += grid[row][col];
     }
   }
@@ -25,24 +26,26 @@ const countNeighbors = (grid, x, y) => {
   return count;
 };
 
-export const stepGrid = grid => {
-  const dimension = grid.length;
-  const newGrid = initGrid(dimension);
+const getCellNextState = (isAlive, numNeighbors) => {
+  const [LIVES, DIES] = [1, 0];
 
-  for (let i = 0; i < dimension; i++) {
-    for (let j = 0; j < dimension; j++) {
-      const alive = !!grid[i][j];
-      const neighbors = countNeighbors(grid, i, j);
-
-      if (!alive && neighbors === 3) {
-        newGrid[i][j] = 1;
-      } else if (alive && (neighbors < 2 || neighbors > 3)) {
-        newGrid[i][j] = 0;
-      } else {
-        newGrid[i][j] = alive ? 1 : 0;
-      }
-    }
+  if (!isAlive && numNeighbors === 3) {
+    return LIVES;
+  } else if (isAlive && (numNeighbors < 2 || numNeighbors > 3)) {
+    return DIES;
+  } else {
+    return isAlive ? LIVES : DIES;
   }
+};
+
+export const stepGrid = grid => {
+  const newGrid = initGrid(grid.length, grid[0].length);
+
+  grid.forEach((row, i) => {
+    row.forEach((cell, j) => {
+      newGrid[i][j] = getCellNextState(!!cell, countNeighbors(grid, i, j));
+    });
+  });
 
   return newGrid;
 };
@@ -50,8 +53,8 @@ export const stepGrid = grid => {
 export const countPopulation = grid => {
   let count = 0;
   for (let row of grid) {
-    for (let col of row) {
-      if (col === 1) count++;
+    for (let cell of row) {
+      if (cell === 1) count++;
     }
   }
   return count;
