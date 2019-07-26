@@ -4,4 +4,4 @@ John Conway's Game of Life is a classic cellular automaton simulation with cells
 
 I built this with JS/React in about half a week as part of the computer science curriculum at Lambda School.
 
-Check out the deployed project [here](https://jb-conways.netlify.com/) for a bit more background and to tinker with the game.
+Check out the deployed project [here](https://gol.joelb.dev/) for a bit more background and to tinker with the game.
