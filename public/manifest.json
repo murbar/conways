@@ -1,6 +1,6 @@
 {
-  "short_name": "Game of Life",
-  "name": "Conway's GOF by Joel Bartlett",
+  "short_name": "Conway's",
+  "name": "Conway's GOL by Joel Bartlett",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#181C20",
+  "background_color": "#181C20"
 }
