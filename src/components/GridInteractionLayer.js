@@ -26,9 +26,10 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
 
   const getMousePosition = e => {
     const rect = e.target.getBoundingClientRect();
-    const xPos = e.clientX - rect.left;
-    const yPos = e.clientY - rect.top;
-    return [xPos, yPos];
+    const touch = e.type === 'touchstart';
+    const xPos = touch ? e.touches[0].clientX : e.clientX;
+    const yPos = touch ? e.touches[0].clientY : e.clientY;
+    return [xPos - rect.left, yPos - rect.top];
   };
 
   const getGridCoordinates = e => {
@@ -129,6 +130,7 @@ function GridInteractionLayer({ gridState, isPaused, callbacks, theme }) {
         onMouseMove: handleMouseMove,
         onMouseLeave: handleMouseLeave,
         onMouseDown: handleMouseDown,
+        onTouchStart: handleMouseDown,
         onDoubleClick: handleDoubleClick
       }}
     />
