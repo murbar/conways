@@ -58,11 +58,19 @@ function App() {
     setEvolutionInterval(prev => {
       return prev == null ? config.speed : null;
     });
+    ReactGA.event({
+      category: 'User',
+      action: 'Play/paused simulation'
+    });
   };
 
   const randomize = () => {
     const newState = initGrid(config.gridRows, config.gridCols, true);
     setGridState(newState);
+    ReactGA.event({
+      category: 'User',
+      action: 'Randomized simulation'
+    });
   };
 
   const step = () => {
@@ -109,6 +117,10 @@ function App() {
         setGridState(gridPreset.map(row => [...row]));
       }, config.speed);
     }
+    ReactGA.event({
+      category: 'User',
+      action: 'Loaded preset'
+    });
   };
 
   const logStatePretty = () => {
