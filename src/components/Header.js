@@ -15,6 +15,25 @@ const Styles = styled.div`
   h1 {
     margin-bottom: 0;
   }
+  .links {
+    padding: 0;
+  }
+  .links li {
+    font-size: 1.2em;
+    display: inline-block;
+    margin-right: 1em;
+    &:after {
+      content: '|';
+      padding-left: 1em;
+    }
+  }
+  .links li:last-child {
+    margin-right: 0;
+    &:after {
+      content: '';
+      padding: 0;
+    }
+  }
 `;
 
 const HowTo = styled.div`
@@ -136,7 +155,7 @@ export default function Header() {
     <Styles>
       <h1>The Game of Life</h1>
       <Instructions />
-      <ul>
+      <ul className="links">
         <li>
           <AnchorLink href="#what">What is it?</AnchorLink>
         </li>
