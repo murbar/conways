@@ -48,7 +48,9 @@ function App() {
     gridRows: 42,
     speed: 200
   });
-  const [gridState, setGridState] = useState(initGrid(config.gridRows, config.gridCols, true));
+  const [gridState, setGridState] = useState(
+    initGrid(config.gridRows, config.gridCols, true)
+  );
   const [evolutionInterval, setEvolutionInterval] = useState(null);
   const [genCount, setGenCount] = useState(0);
   const popCount = countPopulation(gridState);
@@ -93,8 +95,8 @@ function App() {
     });
   };
 
-  const setSpeed = speedMS => {
-    const speed = parseInt(speedMS);
+  const setSpeed = intervalMs => {
+    const speed = parseInt(intervalMs);
 
     if (!typeof speed === 'number') {
       console.error('Speed must be a number');
@@ -107,7 +109,9 @@ function App() {
   };
 
   const loadPreset = gridPreset => {
-    if (!(gridPreset.length <= config.gridRows && gridPreset[0].length <= config.gridCols)) {
+    if (
+      !(gridPreset.length <= config.gridRows && gridPreset[0].length <= config.gridCols)
+    ) {
       console.error('Grid preset too large for current grid');
     } else {
       setEvolutionInterval(null);
@@ -152,7 +156,10 @@ function App() {
     <AppWrapper>
       <Header />
       <GameContainer>
-        <Controls isPaused={isPaused} callbacks={{ playPause, step, randomize, reset, setSpeed }} />
+        <Controls
+          isPaused={isPaused}
+          callbacks={{ playPause, step, randomize, reset, setSpeed }}
+        />
         <Grid state={gridState} isPaused={isPaused} callbacks={{ setCell, playPause }} />
         <Stats genCount={genCount} popCount={popCount} isPaused={isPaused} />
       </GameContainer>
