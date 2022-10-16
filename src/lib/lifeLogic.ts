@@ -1,16 +1,20 @@
-export const initGrid = (rows, cols, random = false) =>
+export type LifeGrid = (0 | 1)[][];
+
+const ACTIVE_CELL_CHANCE = 0.2;
+
+export const initGrid = (rows: number, cols: number, random = false) =>
   Array(rows)
-    .fill()
-    .map(row =>
+    .fill(null)
+    .map((row) =>
       Array(cols)
-        .fill()
-        .map(col => {
-          if (random) return Math.random() < 0.25 ? 1 : 0;
+        .fill(null)
+        .map((col) => {
+          if (random) return Math.random() < ACTIVE_CELL_CHANCE ? 1 : 0;
           return 0;
         })
     );
 
-const countNeighbors = (grid, x, y) => {
+const countNeighbors = (grid: LifeGrid, x: number, y: number) => {
   const numRows = grid.length;
   const numCols = grid[0].length;
   let count = 0;
@@ -26,19 +30,19 @@ const countNeighbors = (grid, x, y) => {
   return count;
 };
 
-const getCellNextState = (isAlive, numNeighbors) => {
-  const [LIVES, DIES] = [1, 0];
+const getCellNextState = (isAlive: boolean, neighborCount: number) => {
+  const [LIVES, DIES] = [1, 0] as const;
 
-  if (!isAlive && numNeighbors === 3) {
+  if (!isAlive && neighborCount === 3) {
     return LIVES;
-  } else if (isAlive && (numNeighbors < 2 || numNeighbors > 3)) {
+  } else if (isAlive && (neighborCount < 2 || neighborCount > 3)) {
     return DIES;
   } else {
     return isAlive ? LIVES : DIES;
   }
 };
 
-export const stepGrid = grid => {
+export const stepGrid = (grid: LifeGrid) => {
   const newGrid = initGrid(grid.length, grid[0].length);
 
   grid.forEach((row, i) => {
@@ -50,7 +54,7 @@ export const stepGrid = grid => {
   return newGrid;
 };
 
-export const countPopulation = grid => {
+export const countPopulation = (grid: LifeGrid) => {
   let count = 0;
   for (let row of grid) {
     for (let cell of row) {

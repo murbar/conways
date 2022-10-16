@@ -6,7 +6,7 @@ import { ReactComponent as GlidersPreview } from '../images/gliders-preset.svg';
 import { ReactComponent as GunPreview } from '../images/gun-preset.svg';
 import { ReactComponent as OscilPreview } from '../images/oscill-preset.svg';
 import { ReactComponent as Arrow } from '../icons/arrow-right.svg';
-import { gliderGun, gliderArray, oscillators, spaceships } from '../gridPresets';
+import { gliderGun, gliderArray, oscillators, spaceships } from '../lib/gridPresets';
 
 const Preset = styled.div`
   margin-bottom: 3rem;
