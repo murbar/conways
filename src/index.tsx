@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import GlobalStyles from './styles/global';
 import App from './App';
 
-const Root = () => {
+const AppContainer = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -16,4 +16,5 @@ const Root = () => {
   );
 };
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+const root = createRoot(document.getElementById('root'));
+root.render(<AppContainer />);
