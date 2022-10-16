@@ -22,7 +22,7 @@ const Footer = () => {
       <a href="https://joelb.dev" title="Joel Bartlett's portfolio">
         Joel Bartlett
       </a>
-      , July 2019
+      
       <br />{' '}
       <a href="https://github.com/murbar/conways" title="See the code on GitHub">
         Have a look at the code
