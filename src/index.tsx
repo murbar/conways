@@ -5,16 +5,13 @@ import theme from './styles/theme';
 import GlobalStyles from './styles/global';
 import App from './App';
 
-const AppContainer = () => {
-  return (
+createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
         <App />
       </>
     </ThemeProvider>
-  );
-};
-
-const root = createRoot(document.getElementById('root'));
-root.render(<AppContainer />);
+  </React.StrictMode>
+);
